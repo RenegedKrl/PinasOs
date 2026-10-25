@@ -1,50 +1,48 @@
 # Integração com o Pinas Kit
 
-O Pinas OS conversa com o Pinas Kit de três jeitos. Use o que o Pinas Kit suportar.
+O Pinas OS usa a **API pública de captação** do Pinas Kit (função `w-lead` no Supabase, a mesma que o widget `w.js` usa).
+**Não precisa de login nem senha**, só da chave pública de uma captação (o `data-pk` do código de instalação).
 
-## 1. Webhook (recomendado)
-Configure no `.env`:
-```
-PINAS_KIT_URL=https://seu-pinas-kit/api/webhook
-PINAS_KIT_TOKEN=seu-token
-PINAS_KIT_AUTH=bearer        # bearer | header (X-Api-Key) | query (?token=)
-```
-Teste: `node motor-local/pinas-kit.js testar`
+API: `https://qdpwawkeiyvggcfonfsa.supabase.co/functions/v1` (projeto do `pinas_kit`, ver `docs/STATUS.md` lá).
 
-### O que o Pinas OS envia (POST JSON)
-**Prospect** (`node motor-local/pinas-kit.js enviar-prospect <slug> [status]`, chamado no fim do `/1-prospectar`):
-```json
-{
-  "tipo": "prospect", "origem": "pinas-os", "slug": "clinica-x",
-  "empresa": "Clínica X", "nicho": "Odontologia", "cidade": "Campinas", "site": "https://...",
-  "whatsapp": "5519...", "status": "protótipo pronto", "pontuacao": 11.5,
-  "oportunidades": ["CRÍTICO (Tráfego): Sem Pixel da Meta ..."],
-  "performanceMobile": 34, "temPixel": false, "prototipo": true, "videoDemo": true,
-  "abordagem": "texto das mensagens...", "atualizadoEm": "2026-10-25T10:00:00Z"
-}
-```
-**Lead** (vindo da LP, enviado pelo nó "Enviar ao Pinas Kit" do workflow n8n):
-```json
-{ "tipo": "lead", "origem": "lp-pinas", "cliente": "clinica-x", "data": "...", "nome": "Maria",
-  "telefone": "5519...", "resposta1": "Implante", "resposta2": "Este mês",
-  "utm_source": "meta", "utm_campaign": "...", "status": "Novo lead", "link_whatsapp": "https://wa.me/..." }
-```
-Se o Pinas Kit espera outros nomes de campo, ajuste `montarProspect()` em `motor-local/pinas-kit.js` (um lugar só).
+## 1. Leads das LPs dos clientes → Pinas Kit do cliente
+Cada cliente da agência que usa o Pinas Kit tem a própria conta e captação.
+1. No Pinas Kit do cliente: **Captação → Nova** → copie a chave do código de instalação (`data-pk="..."`).
+2. Em **Configurações → Sites**, cadastre o domínio da LP (a API só aceita leads de domínios cadastrados; lista vazia aceita qualquer um).
+3. No `clientes/<slug>/site/lp-conteudo.json`:
+   ```json
+   "rastreamento": { "pinasKitChave": "CHAVE_DO_CLIENTE" }
+   ```
+4. `node motor-local/gerar-lp.js <slug> --oficial`
 
-## 2. CSV (sem API)
-- **Do Pinas Kit para o OS:** exporte os prospects como CSV e rode
-  `node motor-local/pinas-kit.js importar arquivo.csv`
-  Reconhece colunas como nome/empresa, categoria/nicho, site/website/url, telefone/whatsapp, cidade, instagram (com `,` ou `;`). Duplicados são ignorados.
-- **Do OS para o Pinas Kit:** `node motor-local/pinas-kit.js exportar` → `comercial/exportar-pinas-kit.csv`.
+Ao concluir a triagem, a LP envia ao Pinas Kit: nome, WhatsApp, respostas (campo "momento"), as perguntas e respostas (mensagem), UTMs e fbclid/gclid.
+O contato aparece em **Contatos** com a origem certa ("Meta Ads", "Google Ads", "Instagram"…) e entra no Funil. O visitante continua indo para o WhatsApp com a mensagem completa.
 
-## 3. Fluxo completo sugerido
-1. Pinas Kit encontra empresas (Google Maps etc.) → exporta CSV.
-2. `pinas-kit.js importar` → `prospectar-lote.js` (diagnostica todos e ranqueia).
-3. `/0-piloto-automatico` nos 5 melhores do ranking.
-4. Cada prospect pronto volta ao Pinas Kit com `enviar-prospect` (status, pontuação, mensagens).
-5. Leads das LPs dos clientes chegam no Pinas Kit pelo n8n.
+## 2. Prospects do Pinas OS → o SEU Pinas Kit
+1. Na sua conta: crie uma captação só para isso (ex.: "Prospects Pinas OS") e copie a chave.
+2. No `.env`:
+   ```
+   PINAS_KIT_CHAVE=sua-chave
+   ```
+3. Teste (não cria contato): `node motor-local/pinas-kit.js testar`
+4. Enviar:
+   - um: `node motor-local/pinas-kit.js enviar-prospect <slug> "protótipo pronto"`
+   - todos os prontos com WhatsApp: `node motor-local/pinas-kit.js enviar-lote` (não repete quem já foi; controle em `comercial/.pinas-kit-enviados.json`)
 
-## O que eu (Claude) preciso saber do Pinas Kit para fechar a integração
-- Ele tem API/webhook? Qual URL e como autentica?
-- Quais campos ele aceita para prospect e para lead?
-- Ele exporta CSV? Com quais colunas?
+Cada prospect vira um contato com: nome = empresa, momento = status, mensagem = nicho, cidade, site, pontuação, principais falhas e se o protótipo está pronto. Origem: `pinas-os` / campanha `prospeccao-<nicho>`.
+
+### Limites da API (do próprio Pinas Kit)
+- 10 contatos por hora por IP e 3 por telefone por dia. O `enviar-lote` para sozinho no limite: rode de novo depois.
+- A conta precisa estar com assinatura ativa ou em teste.
+- O prospect precisa ter WhatsApp com DDD na coluna `whatsapp` do pipeline.
+- A origem enviada é `PINAS_KIT_ORIGEM` (padrão `https://pinaskit.vercel.app`, sempre aceita). Se trocar o domínio do Pinas Kit, atualize.
+
+## 3. Importar a lista de prospecção do Pinas Kit
+Contatos → **Exportar** (CSV) → `node motor-local/pinas-kit.js importar arquivo.csv` → `node motor-local/prospectar-lote.js`.
+
+## 4. Webhook genérico (alternativa)
+Se preferir outro sistema: `PINAS_KIT_URL` (+ `PINAS_KIT_TOKEN`, `PINAS_KIT_AUTH=bearer|header|query`) e deixe `PINAS_KIT_CHAVE` vazio. O payload JSON completo está em `montarProspect()` de `motor-local/pinas-kit.js`.
+
+## Sugestões para o Pinas Kit (no repositório pinas_kit)
+- Um endpoint autenticado por token (ex.: `POST /functions/v1/api-leads` com chave de API da conta) para integrações de servidor, sem o limite por IP pensado para visitantes.
+- Campo `etiquetas` no `w-lead` (ex.: "prospect", nicho) para separar prospects de leads de verdade.

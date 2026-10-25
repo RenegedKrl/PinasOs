@@ -25,8 +25,16 @@
     "email": null,
     "cnpj": null
   },
-  "rastreamento": { "pixelId": "", "gtmId": "", "webhookUrl": "" },
-  "topo": { "texto": "Cambuí, Campinas" },
+  "rastreamento": {
+    "pixelId": "",
+    "gtmId": "",
+    "webhookUrl": "",
+    "pinasKitChave": "",
+    "pinasKitApi": "https://qdpwawkeiyvggcfonfsa.supabase.co/functions/v1"
+  },
+  "topo": {
+    "texto": "Cambuí, Campinas"
+  },
   "hero": {
     "eyebrow": "Implantes e lentes de contato dental",
     "titulo": "Volte a sorrir em foto *sem esconder* os dentes",
@@ -45,19 +53,42 @@
   "contraste": {
     "titulo": "Você não precisa passar por isso *de novo*",
     "tituloAntes": "O que você já viveu",
-    "antes": ["Orçamento que muda depois que o tratamento começa", "Quarenta minutos de espera na recepção", "Sair da consulta sem entender o que vai ser feito"],
+    "antes": [
+      "Orçamento que muda depois que o tratamento começa",
+      "Quarenta minutos de espera na recepção",
+      "Sair da consulta sem entender o que vai ser feito"
+    ],
     "tituloDepois": "Aqui",
-    "depois": ["Valor fechado por escrito antes de começar", "Horário marcado é horário cumprido", "Plano explicado com fotos do seu próprio sorriso"]
+    "depois": [
+      "Valor fechado por escrito antes de começar",
+      "Horário marcado é horário cumprido",
+      "Plano explicado com fotos do seu próprio sorriso"
+    ]
   },
   "servicos": {
     "eyebrow": "Tratamentos",
     "titulo": "O que a gente faz *bem*",
     "itens": [
-      { "titulo": "Implantes", "texto": "Para quem perdeu um ou mais dentes. Planejamento digital e acompanhamento até a coroa final." },
-      { "titulo": "Lentes de contato dental", "texto": "Você vê uma prévia do resultado antes de qualquer desgaste." },
-      { "titulo": "Clareamento", "texto": "No consultório ou em casa, com moldeira feita para você." },
-      { "titulo": "Alinhadores", "texto": "Placas transparentes no lugar do aparelho fixo." },
-      { "titulo": "Limpeza e revisão", "texto": "A gente te avisa quando for a hora de voltar." }
+      {
+        "titulo": "Implantes",
+        "texto": "Para quem perdeu um ou mais dentes. Planejamento digital e acompanhamento até a coroa final."
+      },
+      {
+        "titulo": "Lentes de contato dental",
+        "texto": "Você vê uma prévia do resultado antes de qualquer desgaste."
+      },
+      {
+        "titulo": "Clareamento",
+        "texto": "No consultório ou em casa, com moldeira feita para você."
+      },
+      {
+        "titulo": "Alinhadores",
+        "texto": "Placas transparentes no lugar do aparelho fixo."
+      },
+      {
+        "titulo": "Limpeza e revisão",
+        "texto": "A gente te avisa quando for a hora de voltar."
+      }
     ]
   },
   "galeriaTitulo": "O consultório",
@@ -70,25 +101,64 @@
     "imagemAlt": "[Nome] no consultório",
     "legenda": "[Nome], CRO [número]",
     "numeros": [
-      { "valor": "[X]", "rotulo": "anos de clínica" },
-      { "valor": "[X]", "rotulo": "implantes feitos" },
-      { "valor": "[X]", "rotulo": "nota no Google" }
+      {
+        "valor": "[X]",
+        "rotulo": "anos de clínica"
+      },
+      {
+        "valor": "[X]",
+        "rotulo": "implantes feitos"
+      },
+      {
+        "valor": "[X]",
+        "rotulo": "nota no Google"
+      }
     ]
   },
   "depoimentos": {
     "titulo": "Quem já passou *por aqui*",
     "itens": [
-      { "nome": "[NOME REAL]", "detalhe": "Implante, [bairro]", "texto": "[DEPOIMENTO REAL, de preferência sobre preço ou medo]" },
-      { "nome": "[NOME REAL]", "detalhe": "Lentes, [bairro]", "texto": "[DEPOIMENTO REAL sobre atendimento ou pontualidade]" },
-      { "nome": "[NOME REAL]", "detalhe": "Clareamento, [bairro]", "texto": "[DEPOIMENTO REAL sobre o resultado]" }
+      {
+        "nome": "[NOME REAL]",
+        "detalhe": "Implante, [bairro]",
+        "texto": "[DEPOIMENTO REAL, de preferência sobre preço ou medo]"
+      },
+      {
+        "nome": "[NOME REAL]",
+        "detalhe": "Lentes, [bairro]",
+        "texto": "[DEPOIMENTO REAL sobre atendimento ou pontualidade]"
+      },
+      {
+        "nome": "[NOME REAL]",
+        "detalhe": "Clareamento, [bairro]",
+        "texto": "[DEPOIMENTO REAL sobre o resultado]"
+      }
     ]
   },
   "triagem": {
     "titulo": "Agende sua avaliação *em 30 segundos*",
     "subtitulo": "Três perguntas rápidas. Depois você cai no nosso WhatsApp e a equipe já sabe do que você precisa.",
     "perguntas": [
-      { "chave": "objetivo", "pergunta": "O que você quer resolver?", "opcoes": ["Implante ou dente faltando", "Estética do sorriso", "Clareamento", "Alinhar os dentes", "Ainda não sei"] },
-      { "chave": "prazo", "pergunta": "Para quando?", "opcoes": ["Esta semana", "Este mês", "Só estou pesquisando"] }
+      {
+        "chave": "objetivo",
+        "pergunta": "O que você quer resolver?",
+        "opcoes": [
+          "Implante ou dente faltando",
+          "Estética do sorriso",
+          "Clareamento",
+          "Alinhar os dentes",
+          "Ainda não sei"
+        ]
+      },
+      {
+        "chave": "prazo",
+        "pergunta": "Para quando?",
+        "opcoes": [
+          "Esta semana",
+          "Este mês",
+          "Só estou pesquisando"
+        ]
+      }
     ],
     "tituloContato": "Para quem a gente responde?",
     "ctaFinal": "Continuar no WhatsApp"
@@ -96,11 +166,26 @@
   "faq": {
     "titulo": "Perguntas que *sempre* aparecem",
     "itens": [
-      { "pergunta": "A avaliação é paga?", "resposta": "[RESPOSTA REAL DA CLÍNICA]" },
-      { "pergunta": "Vocês parcelam?", "resposta": "[CONDIÇÕES REAIS]" },
-      { "pergunta": "Implante dói?", "resposta": "É feito com anestesia local. A maioria das pessoas sente um incômodo leve nos primeiros dias, que passa com o remédio que a gente receita." },
-      { "pergunta": "Quanto tempo leva?", "resposta": "Depende do caso. Na avaliação você recebe o cronograma por escrito, com as datas de cada etapa." },
-      { "pergunta": "Tem estacionamento?", "resposta": "[INFORMAÇÃO REAL]" }
+      {
+        "pergunta": "A avaliação é paga?",
+        "resposta": "[RESPOSTA REAL DA CLÍNICA]"
+      },
+      {
+        "pergunta": "Vocês parcelam?",
+        "resposta": "[CONDIÇÕES REAIS]"
+      },
+      {
+        "pergunta": "Implante dói?",
+        "resposta": "É feito com anestesia local. A maioria das pessoas sente um incômodo leve nos primeiros dias, que passa com o remédio que a gente receita."
+      },
+      {
+        "pergunta": "Quanto tempo leva?",
+        "resposta": "Depende do caso. Na avaliação você recebe o cronograma por escrito, com as datas de cada etapa."
+      },
+      {
+        "pergunta": "Tem estacionamento?",
+        "resposta": "[INFORMAÇÃO REAL]"
+      }
     ]
   },
   "ctaFinal": {

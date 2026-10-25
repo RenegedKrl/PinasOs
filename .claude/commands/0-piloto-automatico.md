@@ -22,7 +22,7 @@ Modo autônomo: **não pare para pedir aprovação entre etapas.** Tome decisõe
 5. **Vídeo:** `node motor-local/gravar-demo-lp.js <slug> 15`
 6. **Fundos de anúncio de amostra:** 3 fundos (`feed`) com as cores do prospect, para mostrar na call.
 7. **Abordagem:** `/1-prospectar` etapa 5 (passando o texto pelo `assets-globais/anti-ia.md`).
-8. **Pinas Kit:** se `PINAS_KIT_URL` estiver no `.env`, `node motor-local/pinas-kit.js enviar-prospect <slug> "protótipo pronto"`. Atualize também `comercial/pipeline-prospeccao.csv`.
+8. **Pinas Kit:** se `PINAS_KIT_CHAVE` (ou `PINAS_KIT_URL`) estiver no `.env`, `node motor-local/pinas-kit.js enviar-prospect <slug> "protótipo pronto"`. Atualize também `comercial/pipeline-prospeccao.csv`.
 
 ## Entrega
 Resumo final (curto): o que foi feito, link dos arquivos principais, as suposições `[A CONFIRMAR]` e o que o usuário precisa fazer (enviar a mensagem).

@@ -257,8 +257,12 @@ const CONFIG = {
   GTM_ID: "",
   WEBHOOK_URL: "",
   WHATSAPP: "5519900000000",
-  EMPRESA: "Clínica Sorriso Vivo"
+  EMPRESA: "Clínica Sorriso Vivo",
+  // Pinas Kit: chave pública da captação (data-pk). Lead cai em Contatos com a origem (UTM) certa.
+  PINAS_KIT_CHAVE: "",
+  PINAS_KIT_API: "https://qdpwawkeiyvggcfonfsa.supabase.co/functions/v1"
 };
+const INICIO = Date.now();
 // =============================================
 if (CONFIG.PIXEL_ID) {
   !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
@@ -326,6 +330,17 @@ form.addEventListener('submit', e => {
   const titulos = [...document.querySelectorAll('.passo h3')];
   const linhas = ['Olá! Meu nome é ' + nome + '.'];
   Object.values(respostas).forEach((r, i) => linhas.push(titulos[i].innerText + ' ' + r));
+  if (CONFIG.PINAS_KIT_CHAVE) {
+    // Mesmo formato do widget do Pinas Kit (w-lead): toque com UTMs e IDs de clique
+    const toque = { landing: origem.pagina, ts: Date.now() };
+    ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'].forEach(k => { if (origem[k]) toque[k] = origem[k]; });
+    ['fbclid','gclid'].forEach(k => { if (origem[k]) (toque.click_ids = toque.click_ids || {})[k] = origem[k]; });
+    if (origem.referrer) toque.referrer = origem.referrer;
+    const pk = JSON.stringify({ k: CONFIG.PINAS_KIT_CHAVE, phone: lead.telefone, name: nome, option: Object.values(respostas).join(' · ').slice(0, 200),
+      message: linhas.slice(1).join('\n'), consent: true, method: 'page_form', t: Date.now() - INICIO, attr: { first: toque, last: toque }, url: location.href });
+    const ok = navigator.sendBeacon && navigator.sendBeacon(CONFIG.PINAS_KIT_API + '/w-lead', new Blob([pk], { type: 'text/plain' }));
+    if (!ok) fetch(CONFIG.PINAS_KIT_API + '/w-lead', { method: 'POST', body: pk, keepalive: true, headers: { 'content-type': 'text/plain' } }).catch(() => {});
+  }
   if (origem.utm_campaign) linhas.push('(via ' + origem.utm_campaign + ')');
   const url = 'https://wa.me/' + CONFIG.WHATSAPP + '?text=' + encodeURIComponent(linhas.join('\n'));
   setTimeout(() => { location.href = url; }, 250);

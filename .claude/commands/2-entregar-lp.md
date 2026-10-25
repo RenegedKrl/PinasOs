@@ -20,6 +20,7 @@ Estrutura que o gerador monta (7 dobras): hero → contraste → serviços (índ
 - **FAQ:** as 5 maiores objeções.
 - **Imagens:** salve em `clientes/$ARGUMENTS/site/img/` em WebP (converta com `ffmpeg -i foto.jpg -q:v 80 -vf scale=1200:-1 img/hero.webp`) e referencie como `img/hero.webp`.
 - **Rastreamento:** preencha `rastreamento.pixelId`, `gtmId`, `webhookUrl` quando o usuário fornecer.
+- **Pinas Kit:** se o cliente usa o Pinas Kit, preencha `rastreamento.pinasKitChave` com a chave da captação dele (e lembre de cadastrar o domínio da LP em Configurações → Sites do Kit). Ver `integracoes/pinas-kit.md`.
 
 ## Etapa 3 — Gerar e verificar
 1. `node motor-local/gerar-lp.js $ARGUMENTS --oficial`

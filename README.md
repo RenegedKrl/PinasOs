@@ -109,7 +109,10 @@ O `buscar-referencias.js` abre os sites num navegador invisível, tira prints e 
 - Referência é direção, nunca cópia.
 
 ## 7. Pinas Kit
-Veja `integracoes/pinas-kit.md`. Resumo: importa prospects por CSV, envia prospects prontos e leads das LPs por webhook.
+Integrado pela API pública de captação do Pinas Kit (a mesma do widget), sem senha. Veja `integracoes/pinas-kit.md`.
+- **LPs dos clientes:** `rastreamento.pinasKitChave` no JSON → cada lead da triagem cai em Contatos com a origem (Meta Ads, Google Ads…).
+- **Seus prospects:** `PINAS_KIT_CHAVE` no `.env` → `node motor-local/pinas-kit.js enviar-lote`.
+- **Importar lista:** exporte Contatos em CSV → `pinas-kit.js importar`.
 
 ## 8. Gestão da agência
 | Ferramenta | Para quê |

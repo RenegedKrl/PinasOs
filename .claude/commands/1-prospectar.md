@@ -46,7 +46,7 @@ No final, aponte para `comercial/roteiro-call.md`.
 
 ## Etapa 6 — Registro
 Acrescente uma linha em `comercial/pipeline-prospeccao.csv` (crie a partir do `.modelo.csv` se não existir) com status `protótipo pronto`.
-Se `PINAS_KIT_URL` estiver configurado: `node motor-local/pinas-kit.js enviar-prospect <slug> "protótipo pronto"`.
+Se `PINAS_KIT_CHAVE` (ou `PINAS_KIT_URL`) estiver no `.env` e o prospect tiver WhatsApp: `node motor-local/pinas-kit.js enviar-prospect <slug> "protótipo pronto"`.
 
 ## Histórico de aprendizado
 - (regras confirmadas pelo usuário entram aqui)
