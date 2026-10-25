@@ -1,0 +1,11 @@
+node_modules/
+__pycache__/
+.venv/
+.env
+.vercel/
+# Dados reais de clientes ficam fora do Git (LGPD). Só o modelo é versionado.
+clientes/*
+!clientes/_modelo-padrao/
+!clientes/_modelo-padrao/**
+*.mp3
+*.mp4

@@ -1,0 +1,14 @@
+{
+  "marca": {
+    "corPrimaria": "#0F766E",
+    "corSecundaria": "#F5F5F4",
+    "corEscura": "#0C0A09",
+    "logo": null
+  },
+  "criativos": [
+    { "id": "dor-01", "angulo": "dor", "formato": ["feed", "stories"], "layout": "foto-escurecida", "imagem": "fotos/foto-01.jpg", "posicaoImagem": "center" },
+    { "id": "desejo-01", "angulo": "desejo", "formato": ["feed", "stories"], "layout": "foto-faixa-marca", "imagem": "fotos/foto-02.jpg" },
+    { "id": "autoridade-01", "angulo": "autoridade", "formato": ["feed", "stories"], "layout": "moldura", "imagem": "fotos/foto-03.jpg" },
+    { "id": "oferta-01", "angulo": "oferta", "formato": "quadrado", "layout": "cor-solida" }
+  ]
+}

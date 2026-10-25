@@ -1,0 +1,15 @@
+{
+  "name": "pinas-os",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Sistema operacional da agência Pinas: Claude Code + scripts locais gratuitos",
+  "scripts": {
+    "diagnosticar": "node motor-local/diagnosticar-lead.js",
+    "criativos": "node motor-local/renderizar-criativos.js",
+    "novo-cliente": "node motor-local/novo-cliente.js",
+    "testar": "node motor-local/testar-sistema.js"
+  },
+  "dependencies": {
+    "playwright": "^1.48.0"
+  }
+}
