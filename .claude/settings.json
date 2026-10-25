@@ -1,6 +1,13 @@
 {
   "permissions": {
     "allow": [
+      "Bash(node motor-local/backup.js:*)",
+      "Bash(node motor-local/gerar-documento.js:*)",
+      "Bash(node motor-local/gerar-briefing.js:*)",
+      "Bash(node motor-local/auditar-clientes.js:*)",
+      "Bash(node motor-local/painel-agencia.js:*)",
+      "Bash(node motor-local/follow-ups.js:*)",
+      "Bash(node motor-local/calcular-perda.js:*)",
       "Bash(node motor-local/pinas-kit.js:*)",
       "Bash(node motor-local/prospectar-lote.js:*)",
       "Bash(node motor-local/buscar-referencias.js:*)",

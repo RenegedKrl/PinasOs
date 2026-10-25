@@ -16,7 +16,14 @@
     "relatorio": "node motor-local/relatorio-mensal.js",
     "referencias": "node motor-local/buscar-referencias.js",
     "lote": "node motor-local/prospectar-lote.js",
-    "kit": "node motor-local/pinas-kit.js"
+    "kit": "node motor-local/pinas-kit.js",
+    "agenda": "node motor-local/follow-ups.js",
+    "painel": "node motor-local/painel-agencia.js",
+    "auditar": "node motor-local/auditar-clientes.js",
+    "perda": "node motor-local/calcular-perda.js",
+    "briefing": "node motor-local/gerar-briefing.js",
+    "documento": "node motor-local/gerar-documento.js",
+    "backup": "node motor-local/backup.js"
   },
   "dependencies": {
     "playwright": "^1.48.0"

@@ -111,24 +111,39 @@ O `buscar-referencias.js` abre os sites num navegador invisível, tira prints e 
 ## 7. Pinas Kit
 Veja `integracoes/pinas-kit.md`. Resumo: importa prospects por CSV, envia prospects prontos e leads das LPs por webhook.
 
-## 8. Rotina
+## 8. Gestão da agência
+| Ferramenta | Para quê |
+|---|---|
+| `/8-rotina` ou `npm run agenda` | Agenda do dia: follow-ups atrasados, cobranças, renovações, relatórios pendentes |
+| `npm run painel` | `painel.html`: receita recorrente, funil, renovações, saúde dos clientes |
+| `npm run auditar` | Toda segunda: confere se as LPs dos clientes estão no ar, com Pixel, GTM e WhatsApp |
+| `node motor-local/calcular-perda.js <slug> --ticket 3000` | Página com quanto o lead perde por mês, para mostrar na call |
+| `node motor-local/gerar-briefing.js <slug>` | Formulário para o cliente mandar materiais e informações sem reunião |
+| `node motor-local/gerar-documento.js <arquivo.md>` | Proposta, contrato e análises viram documento bonito para PDF |
+| `npm run backup` | Backup de `clientes/`, `comercial/` e `.env` (fora do Git) |
+
+Clientes fechados entram em `comercial/financeiro.csv` (copie de `financeiro.modelo.csv`). O pipeline de prospecção fica em `comercial/pipeline-prospeccao.csv`, com status: novo → diagnosticado → protótipo pronto → mensagem enviada → follow-up 1 → follow-up 2 → respondeu → call marcada → proposta enviada → negociando → fechado/perdido.
+
+## 9. Rotina
 **Prospecção (manhã)** — importe a lista do Pinas Kit (`pinas-kit.js importar`), rode `/0-piloto-automatico --lote 5` e vá tomar café. Mande a mensagem de `scripts-abordagem.md` e, quando responderem, o vídeo `demo-mobile.mp4`.
 
 **Call** — siga `comercial/roteiro-call.md`. Fechou? `/5-proposta`.
 
 **Onboarding** — checklist em `comercial/onboarding-checklist.md`. Depois `/2-entregar-lp` e `/3-kit-trafego-crm`.
 
+**Todo dia** — `/8-rotina`: o Claude monta a agenda e deixa as mensagens prontas.
+
 **Todo mês** — exporte a planilha de leads para `clientes/<slug>/crm/leads.csv` e rode `/4-relatorio-mensal`.
 
 **Toda semana** — revise `APRENDIZADOS.md` e mova as regras boas para as skills.
 
-## 9. Montando o CRM gratuito (n8n + Google Sheets)
+## 10. Montando o CRM gratuito (n8n + Google Sheets)
 1. Crie uma Planilha Google com uma aba `Leads` e o cabeçalho de `clientes/_modelo-padrao/crm/leads-modelo.csv`.
 2. n8n: rode local com `npx n8n` (ou Docker) — para receber leads de verdade ele precisa de URL pública (n8n Cloud, VPS barata ou túnel Cloudflare gratuito).
 3. Importe `motor-local/modelos/n8n-workflow-leads.json`, conecte o Google Sheets e escolha a API de WhatsApp do alerta.
 4. Ative o workflow e cole a URL do webhook em `rastreamento.webhookUrl` do `lp-conteudo.json`. Gere a LP de novo.
 
-## 10. Estrutura
+## 11. Estrutura
 ```
 CLAUDE.md                     regras que o Claude segue sempre
 APRENDIZADOS.md               correções anotadas (revisar semanalmente)
@@ -149,7 +164,7 @@ clientes/<slug>/              dados reais (fora do Git por causa da LGPD — fa�
 exemplos/                     saídas de demonstração
 ```
 
-## 11. Regras que o sistema segue
+## 12. Regras que o sistema segue
 - Abordagem sempre se identifica como Pinas. Protótipos com a marca de terceiros ficam com `noindex` e faixa de "protótipo".
 - Nunca inventa depoimento, nota ou número — usa `[PLACEHOLDER]` até você fornecer o real.
 - Respeita restrições dos conselhos (CFO, CFM, OAB etc.) — ver `assets-globais/inspiracoes-lp/nichos.md`.

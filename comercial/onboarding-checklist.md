@@ -1,5 +1,9 @@
 # Onboarding do cliente — o que pedir no dia 1
 
+## Primeiro passo
+Mande o formulário de briefing: `node motor-local/gerar-briefing.js <slug> --nome "Empresa"` (publique a pasta `briefing/` ou mande o arquivo). Ele cobre quase tudo abaixo.
+Depois do pagamento, cadastre o cliente em `comercial/financeiro.csv` (modelo em `financeiro.modelo.csv`), com `url_lp` para a auditoria semanal.
+
 ## Acessos (nunca peça senha — peça para adicionar o e-mail da Pinas)
 - [ ] Meta Business (Gerenciador de Negócios) → adicionar Pinas como **parceiro** com acesso a: conta de anúncios, Pixel/conjunto de dados, página do Facebook, Instagram.
 - [ ] Forma de pagamento cadastrada **pelo cliente** na conta de anúncios.

@@ -11,6 +11,7 @@
    → Quase sempre: "fica solto no WhatsApp". Esse é o gancho do CRM.
 
 ## 3. Demonstração (5 min)
+- Antes da call: `node motor-local/calcular-perda.js <slug> --ticket <ticket>` e deixe `perda-estimada.html` aberto. Na call, troque as premissas pelos números que a pessoa disser.
 - Abra a LP no celular **dele(a)** (mande o link ou o vídeo na hora).
 - Mostre o diagnóstico: "Seu site hoje leva X segundos no 4G e não tem Pixel — todo mundo que clica num anúncio e não chama, some."
 - Faça a triagem ao vivo e mostre a mensagem chegando no WhatsApp já com as respostas.

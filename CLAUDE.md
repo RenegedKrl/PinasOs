@@ -28,6 +28,13 @@ NUNCA faça no chat um trabalho repetitivo que um script resolve. Leia só a sa�
 | Prospecção em lote + ranking | `node motor-local/prospectar-lote.js [csv] [--max 20]` |
 | Pinas Kit | `node motor-local/pinas-kit.js enviar-prospect <slug> \| importar <csv>` |
 | Gerar os 3 estilos de LP | `node motor-local/gerar-lp.js <slug> --todos` |
+| Perda estimada (para a call) | `node motor-local/calcular-perda.js <slug> --ticket <R$> [--visitas N]` |
+| Agenda do dia (follow-ups, cobranças, renovações) | `node motor-local/follow-ups.js` |
+| Painel da agência | `node motor-local/painel-agencia.js` → `painel.html` |
+| Auditoria das LPs dos clientes | `node motor-local/auditar-clientes.js [slug]` |
+| Formulário de briefing para o cliente | `node motor-local/gerar-briefing.js <slug> [--nome "Empresa"]` |
+| .md → documento bonito/PDF | `node motor-local/gerar-documento.js <arquivo.md>` |
+| Backup | `node motor-local/backup.js` |
 
 - LP: escreva só `clientes/<slug>/site/lp-conteudo.json` e rode o gerador. Edite o HTML à mão apenas para ajustes que o JSON não cobre.
 - Para consultar JSONs grandes use `jq`. Não cole saídas longas no contexto.
@@ -72,6 +79,7 @@ Só mova uma regra para dentro de uma skill quando o usuário pedir ("salva isso
 ## Skills disponíveis
 - `/0-piloto-automatico <URL> <slug>` ou `--lote 5` — prospecção inteira sem pausas.
 - `/7-referencias <slug>` — Behance, Meta Ads, Instagram e galerias → direção de arte.
+- `/8-rotina` — agenda do dia, painel, auditoria semanal e backup.
 - `/1-prospectar <URL> <slug>` — diagnóstico + protótipo de LP + vídeo demo + kit de abordagem.
 - `/2-entregar-lp <slug>` — LP oficial com UTMs, Pixel, GTM, webhook e triagem.
 - `/3-kit-trafego-crm <slug>` — plano de campanha, copy, fundos, vídeo, pipeline CRM, n8n e cronograma 90 dias.
