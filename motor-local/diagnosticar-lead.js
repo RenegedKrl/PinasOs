@@ -1,6 +1,7 @@
 // Diagnóstico automático do site de um lead.
 // Uso: node motor-local/diagnosticar-lead.js <URL> <slug>
 // Opcional: PAGESPEED_API_KEY no ambiente para métricas oficiais do Google (gratuito).
+require('./lib/env');
 const { chromium, devices } = require('playwright');
 const fs = require('fs');
 const path = require('path');

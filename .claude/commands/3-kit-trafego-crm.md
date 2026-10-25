@@ -21,10 +21,13 @@ Cliente: `$ARGUMENTS`. Leia antes `clientes/$ARGUMENTS/contexto/contexto-empresa
 - 5 títulos curtos (até 40 caracteres) para o campo Título do anúncio.
 - Para cada fundo do lote: headline de até 6 palavras para o usuário colocar na arte + área livre onde colocar (ver `assets-globais/inspiracoes-criativos/padroes-fundos.md`).
 - Respeite as restrições do conselho profissional do nicho.
+- Use `clientes/$ARGUMENTS/referencias/direcao-de-arte.md` (ângulos que os concorrentes não usam) e, se não houver, rode antes `node motor-local/buscar-referencias.js $ARGUMENTS meta-ads "<serviço> <cidade>"`.
+- Passe todo texto pelo `assets-globais/anti-ia.md`.
 
 ### A3. Fundos de criativos — SEM TEXTO
 1. Fotos: `clientes/$ARGUMENTS/criativos/fotos/` ou `assets-globais/fundos/`. Sem fotos → layout `cor-solida` e avise o usuário.
-2. Escreva `criativos/lote-criativos.json` (modelo em `clientes/_modelo-padrao/criativos/lote-criativos.exemplo.json`): 3 ângulos (Dor, Desejo, Autoridade) × `["feed","stories"]`, variando `layout`.
+2. Prefira layouts menos óbvios: `recorte-editorial` e `duotone` (o grão de filme já vem ligado).
+   Escreva `criativos/lote-criativos.json` (modelo em `clientes/_modelo-padrao/criativos/lote-criativos.exemplo.json`): 3 ângulos (Dor, Desejo, Autoridade) × `["feed","stories"]`, variando `layout`.
 3. `node motor-local/renderizar-criativos.js $ARGUMENTS` → `criativos/fundos/`. Não abra os PNGs, a não ser que o usuário peça.
 
 ### A4. Vídeo Reels/Stories (sem texto na tela)

@@ -48,9 +48,9 @@ checar('Vercel CLI (opcional)', () => sh('vercel --version'), 'Opcional: npm ins
     const site = path.join(raiz, 'clientes', slug, 'site');
     fs.mkdirSync(site, { recursive: true });
     fs.copyFileSync(path.join(raiz, 'clientes', '_modelo-padrao', 'site', 'lp-conteudo.exemplo.json'), path.join(site, 'lp-conteudo.json'));
-    execSync(`node "${path.join(__dirname, 'gerar-lp.js')}" ${slug}`, { stdio: 'ignore' });
-    execSync(`node "${path.join(__dirname, 'verificar-lp.js')}" ${slug}`, { stdio: 'ignore' });
-    console.log('✔ Gerador e verificador de LP — página de exemplo aprovada');
+    execSync(`node "${path.join(__dirname, 'gerar-lp.js')}" ${slug} --todos`, { stdio: 'ignore' });
+    for (const e of ['editorial', 'suico', 'atelier']) execSync(`node "${path.join(__dirname, 'verificar-lp.js')}" "${path.join(site, `index-${e}.html`)}"`, { stdio: 'ignore' });
+    console.log('✔ Gerador e verificador de LP — 3 estilos aprovados');
   } catch {
     falhas++;
     console.log('✘ Teste do motor (Playwright)\n    Rode: npx playwright install chromium');

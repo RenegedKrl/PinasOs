@@ -11,7 +11,8 @@
 //   ]
 // }
 // Formatos: feed (1080x1350), stories (1080x1920), quadrado (1080x1080), paisagem (1200x628)
-// Layouts:  foto-escurecida | foto-faixa-marca | foto-dividida | cor-solida | moldura
+// Layouts:  foto-escurecida | foto-faixa-marca | foto-dividida | cor-solida | moldura | recorte-editorial | duotone
+// Grão de filme em todos por padrão (tira a cara de imagem digital/IA). Desligue com "grao": false na marca.
 const { chromium } = require('playwright');
 const fs = require('fs');
 const path = require('path');
@@ -63,11 +64,22 @@ function montarHtml(item, marca, w, h, imagem, logo) {
       .ac{position:absolute;left:${pad}px;top:55%;width:${Math.round(w * 0.18)}px;height:${Math.round(h * 0.008)}px;background:${p};transform:translateY(-50%)}`,
     'cor-solida': `
       .bg{background:${p}}
-      .ov{background:radial-gradient(circle at 85% 15%, ${s}22 0 18%, transparent 18.2%), radial-gradient(circle at 10% 95%, ${e}33 0 28%, transparent 28.2%)}`,
+      .ov{inset:${pad}px;border:2px solid ${s}55}
+      .ac{position:absolute;left:${pad}px;right:${pad}px;bottom:${Math.round(pad * 2.2)}px;height:2px;background:${s}88}`,
     'moldura': `
       .bg{background:${s}}
       .ov{inset:${pad}px;border-radius:${Math.round(w * 0.03)}px;background:${img} ${pos}/cover no-repeat ${e};box-shadow:0 30px 80px ${e}40}
-      .ac{position:absolute;left:0;bottom:0;width:100%;height:${Math.round(pad * 0.5)}px;background:${p}}`
+      .ac{position:absolute;left:0;bottom:0;width:100%;height:${Math.round(pad * 0.5)}px;background:${p}}`,
+    // Foto recortada como página de revista: margem de papel, filete fino e área livre embaixo
+    'recorte-editorial': `
+      .bg{background:${s}}
+      .ov{left:${pad}px;right:${pad}px;top:${pad}px;height:58%;background:${img} ${pos}/cover no-repeat ${e}}
+      .ac{position:absolute;left:${pad}px;right:${pad}px;top:calc(58% + ${pad * 1.4}px);height:2px;background:${e}}`,
+    // Foto em duas cores da marca (duotone): impossível de confundir com banco de imagem
+    'duotone': `
+      .bg{background:${img} ${pos}/cover no-repeat ${e};filter:grayscale(1) contrast(1.15)}
+      .ov{background:${p};mix-blend-mode:multiply}
+      .ac{position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%, ${e}AA 100%)}`
   };
   let layout = layouts[item.layout] ? item.layout : 'foto-escurecida';
   // Layout de foto sem foto vira fundo de cor da marca (em vez de um retângulo escuro vazio)
@@ -85,7 +97,8 @@ function montarHtml(item, marca, w, h, imagem, logo) {
     html,body{width:${w}px;height:${h}px;overflow:hidden}
     .bg,.ov{position:absolute;inset:0}
     ${layouts[layout]}
-  </style></head><body><div class="bg"></div><div class="ov"></div><div class="ac"></div>${logoHtml}</body></html>`;
+    ${marca.grao === false ? '' : `.grao{position:absolute;inset:0;opacity:.16;mix-blend-mode:overlay;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23g)'/></svg>")}`}
+  </style></head><body><div class="bg"></div><div class="ov"></div><div class="ac"></div>${marca.grao === false ? '' : '<div class="grao"></div>'}${logoHtml}</body></html>`;
 }
 
 async function renderizarLote(slug) {

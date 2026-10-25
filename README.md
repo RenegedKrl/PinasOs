@@ -3,7 +3,9 @@
 Agência autônoma usando **Claude Code** como cérebro e **scripts locais gratuitos** como músculo.
 Serviços: Landing Pages → Tráfego Pago → CRM com 3 meses de acompanhamento.
 
-Veja em `exemplos/` uma LP, fundos de criativos e um relatório gerados pelo sistema.
+Veja em `exemplos/` as LPs nos 3 estilos (com prints de desktop e celular), um fundo de criativo e um relatório.
+
+**Princípio do projeto:** nada pode parecer feito por IA. Toda entrega passa pelo `assets-globais/anti-ia.md` e parte de referências reais (Behance, Biblioteca de Anúncios, Instagram, galerias).
 
 ---
 
@@ -34,6 +36,7 @@ winget install Gyan.FFmpeg
 # Linux: sudo apt install ffmpeg -y   ·   Mac: brew install ffmpeg
 
 npm run sfx      # gera os efeitos sonoros (já vêm prontos, só se apagar)
+cp .env.exemplo .env   # (Windows: copy .env.exemplo .env) e preencha
 npm run testar   # confere se está tudo certo
 ```
 
@@ -50,6 +53,9 @@ Na pasta do projeto, rode `claude` e use:
 
 | Comando | O que faz |
 |---|---|
+| `/0-piloto-automatico https://site.com.br clinica-x` | Faz a prospecção inteira sozinho, sem pedir aprovação entre etapas |
+| `/0-piloto-automatico --lote 5` | Pega os 5 melhores do ranking e prospecta todos |
+| `/7-referencias clinica-x` | Busca referências e define a direção de arte |
 | `/1-prospectar https://site.com.br clinica-x` | Diagnóstico + protótipo de LP + vídeo demo + mensagens de abordagem |
 | `/5-proposta clinica-x maquina` | Proposta e contrato preenchidos |
 | `/2-entregar-lp clinica-x` | LP oficial com UTMs, Pixel, GTM e triagem ligada ao CRM |
@@ -61,7 +67,16 @@ Na pasta do projeto, rode `claude` e use:
 ```bash
 node motor-local/novo-cliente.js clinica-x
 node motor-local/diagnosticar-lead.js https://site.com.br clinica-x
-node motor-local/gerar-lp.js clinica-x [--oficial]
+node motor-local/buscar-referencias.js clinica-x behance "dental clinic website"
+node motor-local/buscar-referencias.js clinica-x meta-ads "implante dentário campinas"
+node motor-local/buscar-referencias.js clinica-x instagram "perfil1,perfil2"
+node motor-local/buscar-referencias.js clinica-x galerias "dentist"
+node motor-local/buscar-referencias.js --login instagram        # 1x, para o Instagram
+node motor-local/pinas-kit.js importar export-do-kit.csv
+node motor-local/prospectar-lote.js --max 20                     # diagnostica e ranqueia
+node motor-local/pinas-kit.js enviar-prospect clinica-x
+node motor-local/gerar-lp.js clinica-x --todos                   # 3 estilos para comparar
+node motor-local/gerar-lp.js clinica-x [--oficial] [--estilo atelier]
 node motor-local/verificar-lp.js clinica-x [--oficial]
 node motor-local/gravar-demo-lp.js clinica-x 15
 node motor-local/renderizar-criativos.js clinica-x
@@ -77,8 +92,27 @@ node motor-local/relatorio-mensal.js clinica-x 2026-11 1500
 - **Criativos:** só fundos, sem texto. O texto vai em `copy-anuncios.md` e você coloca no Canva/Gerenciador.
 - **Relatório:** o script calcula CPL, CAC, ROAS e funil; o Claude só escreve a análise.
 
-## 5. Rotina
-**Prospecção (manhã)** — escolha 5 empresas no Google Maps e rode `/1-prospectar` em cada uma. Mande a mensagem de `scripts-abordagem.md` e, quando responderem, o vídeo `demo-mobile.mp4`.
+## 5. Estilos de LP
+| Estilo | Visual | Nichos |
+|---|---|---|
+| `editorial` | Revista: serifa enorme com itálico, seções numeradas, serviços como índice, papel com grão | odonto, estética, advocacia, psicologia, gastronomia |
+| `suico` | Grid suíço: sans pesada, serviços em tabela, faixa sólida da marca, números gigantes | energia solar, imobiliária, engenharia, academia, B2B |
+| `atelier` | Luxo silencioso: foto em tela cheia, serifa clássica, fundo escuro com grão, galeria horizontal | estética premium, alto padrão, arquitetura, spa |
+
+Os três têm a mesma triagem, UTMs, Pixel, GTM, webhook e LGPD. O verificador também barra texto com cara de IA (travessões demais, "jornada", "transforme", emojis).
+
+## 6. Referências (Behance, Meta Ads, Instagram)
+O `buscar-referencias.js` abre os sites num navegador invisível, tira prints e monta **painéis** (grade de 9 imagens) para o Claude analisar gastando pouco token. Resultado: `clientes/<slug>/referencias/direcao-de-arte.md`.
+- **Instagram** exige login: rode `--login instagram` uma vez (abre uma janela, você entra, fecha). A sessão fica em `.perfil-navegador/`, só no seu computador.
+- Use poucas buscas por dia. Automação em massa pode fazer o Instagram/Facebook bloquear a conta. O script já faz pausas.
+- Os sites mudam o layout de vez em quando; se uma fonte parar de funcionar, me avise que eu ajusto.
+- Referência é direção, nunca cópia.
+
+## 7. Pinas Kit
+Veja `integracoes/pinas-kit.md`. Resumo: importa prospects por CSV, envia prospects prontos e leads das LPs por webhook.
+
+## 8. Rotina
+**Prospecção (manhã)** — importe a lista do Pinas Kit (`pinas-kit.js importar`), rode `/0-piloto-automatico --lote 5` e vá tomar café. Mande a mensagem de `scripts-abordagem.md` e, quando responderem, o vídeo `demo-mobile.mp4`.
 
 **Call** — siga `comercial/roteiro-call.md`. Fechou? `/5-proposta`.
 
@@ -88,13 +122,13 @@ node motor-local/relatorio-mensal.js clinica-x 2026-11 1500
 
 **Toda semana** — revise `APRENDIZADOS.md` e mova as regras boas para as skills.
 
-## 6. Montando o CRM gratuito (n8n + Google Sheets)
+## 9. Montando o CRM gratuito (n8n + Google Sheets)
 1. Crie uma Planilha Google com uma aba `Leads` e o cabeçalho de `clientes/_modelo-padrao/crm/leads-modelo.csv`.
 2. n8n: rode local com `npx n8n` (ou Docker) — para receber leads de verdade ele precisa de URL pública (n8n Cloud, VPS barata ou túnel Cloudflare gratuito).
 3. Importe `motor-local/modelos/n8n-workflow-leads.json`, conecte o Google Sheets e escolha a API de WhatsApp do alerta.
 4. Ative o workflow e cole a URL do webhook em `rastreamento.webhookUrl` do `lp-conteudo.json`. Gere a LP de novo.
 
-## 7. Estrutura
+## 10. Estrutura
 ```
 CLAUDE.md                     regras que o Claude segue sempre
 APRENDIZADOS.md               correções anotadas (revisar semanalmente)
@@ -105,13 +139,17 @@ motor-local/modelos/          workflow n8n
 assets-globais/sfx/           efeitos sonoros (gerados por FFmpeg, sem direitos autorais)
 assets-globais/fundos/        fotos genéricas para criativos
 assets-globais/inspiracoes-*  biblioteca de nichos e padrões aprovados
+integracoes/                  Pinas Kit
+assets-globais/anti-ia.md     regras para nada parecer IA
+assets-globais/referencias/   onde e o que buscar por nicho
+motor-local/lp/estilos/       os 3 estilos de LP
 comercial/                    preços, proposta, contrato, roteiro de call, onboarding
 clientes/_modelo-padrao/      modelo copiado para cada cliente
 clientes/<slug>/              dados reais (fora do Git por causa da LGPD — faça backup!)
 exemplos/                     saídas de demonstração
 ```
 
-## 8. Regras que o sistema segue
+## 11. Regras que o sistema segue
 - Abordagem sempre se identifica como Pinas. Protótipos com a marca de terceiros ficam com `noindex` e faixa de "protótipo".
 - Nunca inventa depoimento, nota ou número — usa `[PLACEHOLDER]` até você fornecer o real.
 - Respeita restrições dos conselhos (CFO, CFM, OAB etc.) — ver `assets-globais/inspiracoes-lp/nichos.md`.

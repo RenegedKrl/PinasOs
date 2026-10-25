@@ -12,7 +12,9 @@ Cliente: `$ARGUMENTS`
 3. Liste para o usuário, em uma mensagem, o que ainda falta de dado real: depoimentos, fotos, números, nome/formação do responsável, Pixel ID, GTM ID, URL do webhook n8n, WhatsApp, CNPJ, e-mail LGPD. Siga com placeholders enquanto isso.
 
 ## Etapa 2 — Conteúdo (`lp-conteudo.json`)
-Estrutura que o gerador monta (7 dobras): hero → contraste → serviços (bento) → autoridade → depoimentos → triagem → FAQ + CTA final + rodapé.
+Se ainda não existir `clientes/$ARGUMENTS/referencias/direcao-de-arte.md`, rode `/7-referencias $ARGUMENTS` antes.
+Defina `estilo` conforme a direção de arte. No `atelier`, preencha `galeria` (fotos reais do espaço) e `manifesto`.
+Estrutura que o gerador monta (7 dobras): hero → contraste → serviços (índice ou tabela, conforme o estilo) → autoridade → depoimentos → triagem → FAQ + CTA final + rodapé.
 - **Hero:** cena desejada no H1 (não o nome do serviço) + garantia/objeção no subtítulo + prova social real.
 - **Triagem:** pergunta 1 = interesse (segmenta o CRM), pergunta 2 = urgência (prioriza atendimento). Use as do nicho em `assets-globais/inspiracoes-lp/nichos.md`.
 - **FAQ:** as 5 maiores objeções.

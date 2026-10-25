@@ -24,6 +24,10 @@ NUNCA faça no chat um trabalho repetitivo que um script resolve. Leia só a sa�
 | Locução | `python3 motor-local/gerar-locucao.py --arquivo <roteiro.txt> <saida.mp3>` |
 | Vídeo Reels sem texto | `node motor-local/renderizar-motion.js <slug>` |
 | Relatório mensal | `node motor-local/relatorio-mensal.js <slug> <AAAA-MM> <investimento>` |
+| Referências visuais | `node motor-local/buscar-referencias.js <slug> <behance\|meta-ads\|instagram\|sites\|galerias> "<termo>"` |
+| Prospecção em lote + ranking | `node motor-local/prospectar-lote.js [csv] [--max 20]` |
+| Pinas Kit | `node motor-local/pinas-kit.js enviar-prospect <slug> \| importar <csv>` |
+| Gerar os 3 estilos de LP | `node motor-local/gerar-lp.js <slug> --todos` |
 
 - LP: escreva só `clientes/<slug>/site/lp-conteudo.json` e rode o gerador. Edite o HTML à mão apenas para ajustes que o JSON não cobre.
 - Para consultar JSONs grandes use `jq`. Não cole saídas longas no contexto.
@@ -40,7 +44,8 @@ Antes de escrever copy, código ou funil para um cliente, leia:
 2. `clientes/<slug>/contexto/design-system.md`
 Se não existirem, rode `novo-cliente.js` e preencha com o que se sabe; marque com `[A CONFIRMAR]` o que for suposição.
 
-## 4. Proibido "AI Slop"
+## 4. Proibido "AI Slop" (nada pode parecer feito por IA)
+Leia e siga `assets-globais/anti-ia.md` em TODA entrega (design, copy, mensagens, propostas). Antes de criar visual, existe direção de arte baseada em referência real (`/7-referencias`).
 - **Design:** degradê roxo/azul genérico, excesso de emojis, cards todos iguais, fonte sem contraste de peso, padding apertado, animação pesada.
 - **Copy:** "No mundo digital de hoje", "Desbloqueie seu potencial", "Eleve seu patamar", "Soluções inovadoras sob medida". Escreva como copywriter de resposta direta: números específicos, dores reais, quebra de objeção, CTA claro.
 - **Nunca invente** depoimentos, números de clientes, avaliações ou certificações. Use placeholders visíveis `[DEPOIMENTO REAL AQUI]` até o cliente fornecer.
@@ -65,6 +70,8 @@ Quando o usuário corrigir algo, aplique a correção e **anote** em `APRENDIZAD
 Só mova uma regra para dentro de uma skill quando o usuário pedir ("salva isso na skill"). Isso evita skills inchadas e contraditórias.
 
 ## Skills disponíveis
+- `/0-piloto-automatico <URL> <slug>` ou `--lote 5` — prospecção inteira sem pausas.
+- `/7-referencias <slug>` — Behance, Meta Ads, Instagram e galerias → direção de arte.
 - `/1-prospectar <URL> <slug>` — diagnóstico + protótipo de LP + vídeo demo + kit de abordagem.
 - `/2-entregar-lp <slug>` — LP oficial com UTMs, Pixel, GTM, webhook e triagem.
 - `/3-kit-trafego-crm <slug>` — plano de campanha, copy, fundos, vídeo, pipeline CRM, n8n e cronograma 90 dias.

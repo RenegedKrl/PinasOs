@@ -12,3 +12,6 @@ clientes/*
 *.mp4
 comercial/pipeline-prospeccao.csv
 comercial/propostas/
+.perfil-navegador/
+comercial/ranking-*.md
+comercial/exportar-pinas-kit.csv

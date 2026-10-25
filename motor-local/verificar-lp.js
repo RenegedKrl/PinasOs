@@ -8,6 +8,18 @@ const fs = require('fs');
 const path = require('path');
 const { pathToFileURL } = require('url');
 
+
+// Rola a página inteira para disparar lazy-load e animações de entrada antes do print
+async function rolarTudo(page) {
+  await page.evaluate(async () => {
+    for (let y = 0; y < document.documentElement.scrollHeight; y += 500) { window.scrollTo(0, y); await new Promise(r => setTimeout(r, 60)); }
+    window.scrollTo(0, 0);
+  });
+  await page.addStyleTag({ content: '.revela{opacity:1!important;transform:none!important;transition:none!important}' });
+  await page.evaluate(() => Promise.all([...document.images].map(i => i.complete ? null : new Promise(r => { i.loading = 'eager'; i.onload = i.onerror = r; setTimeout(r, 4000); }))));
+  await page.waitForTimeout(600);
+}
+
 async function verificar(alvo, oficial) {
   const raiz = path.join(__dirname, '..');
   let url, pastaSaida;
@@ -30,7 +42,7 @@ async function verificar(alvo, oficial) {
     const desk = await browser.newPage({ viewport: { width: 1440, height: 900 } });
     desk.on('pageerror', e => errosConsole.push(e.message));
     await desk.goto(url, { waitUntil: 'load', timeout: 30000 });
-    await desk.waitForTimeout(800);
+    await rolarTudo(desk);
     await desk.screenshot({ path: path.join(pastaSaida, 'print-desktop.png'), fullPage: true });
 
     const info = await desk.evaluate(() => {
@@ -50,7 +62,10 @@ async function verificar(alvo, oficial) {
         consentimento: !!document.querySelector('form input[type="checkbox"][required], [data-consentimento]'),
         temForm: !!document.querySelector('form'),
         placeholders: (texto.match(/\[[A-ZÁÉÍÓÚÂÊÔÃÕÇ][^\]]{2,60}\]/g) || []).slice(0, 15),
-        proibidas: ['No mundo digital de hoje', 'Desbloqueie', 'Eleve seu patamar', 'Soluções inovadoras', 'sob medida para você'].filter(p => texto.toLowerCase().includes(p.toLowerCase())),
+        proibidas: ['no mundo digital', 'no mundo de hoje', 'desbloqueie', 'eleve seu', 'eleve a sua', 'soluções inovadoras', 'sob medida', 'jornada', 'transforme', 'transformar sua', 'seu potencial', 'excelência', 'de ponta', 'experiência única', 'mergulhe', 'alavanc', 'sinergia', 'não procure mais', 'não é só', 'mais do que um', 'robust'].filter(p => texto.toLowerCase().includes(p)),
+        travessoes: (texto.match(/ — /g) || []).length,
+        palavras: texto.split(/\s+/).length,
+        emojis: (texto.match(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}]/gu) || []).length,
         tamanhoHtmlKb: Math.round(document.documentElement.outerHTML.length / 1024)
       };
     });
@@ -70,6 +85,7 @@ async function verificar(alvo, oficial) {
       };
     });
     await mob.screenshot({ path: path.join(pastaSaida, 'print-mobile.png') });
+    await rolarTudo(mob);
     await mob.screenshot({ path: path.join(pastaSaida, 'print-mobile-completo.png'), fullPage: true });
     await ctx.close();
 
@@ -85,6 +101,8 @@ async function verificar(alvo, oficial) {
     check('Imagens com width/height', info.imgsSemDimensao === 0, `${info.imgsSemDimensao} sem dimensão`);
     check('Consentimento LGPD no formulário', !info.temForm || info.consentimento);
     check('Sem frases proibidas (AI slop)', info.proibidas.length === 0, info.proibidas.join(', '));
+    check('Poucos travessões (texto com cara de IA)', info.travessoes <= Math.max(3, info.palavras / 250), `${info.travessoes} travessões em ${info.palavras} palavras`);
+    check('Sem emojis no texto', info.emojis === 0, `${info.emojis}`);
     check('Sem erros de JavaScript', errosConsole.length === 0, errosConsole.slice(0, 3).join(' | '));
     if (oficial) {
       check('Sem noindex (versão oficial)', !info.noindex);

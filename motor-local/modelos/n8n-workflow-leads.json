@@ -6,13 +6,18 @@
         "httpMethod": "POST",
         "path": "pinas-lead-SLUG",
         "responseMode": "onReceived",
-        "options": { "allowedOrigins": "*" }
+        "options": {
+          "allowedOrigins": "*"
+        }
       },
       "id": "b1a1c0de-0001-4000-8000-000000000001",
       "name": "Webhook LP",
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2,
-      "position": [240, 300],
+      "position": [
+        240,
+        300
+      ],
       "webhookId": "b1a1c0de-0001-4000-8000-0000000000aa"
     },
     {
@@ -23,21 +28,38 @@
       "name": "Normalizar lead",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [460, 300]
+      "position": [
+        460,
+        300
+      ]
     },
     {
       "parameters": {
         "operation": "append",
-        "documentId": { "__rl": true, "mode": "url", "value": "COLE_AQUI_A_URL_DA_PLANILHA" },
-        "sheetName": { "__rl": true, "mode": "name", "value": "Leads" },
-        "columns": { "mappingMode": "autoMapInputData", "value": {} },
+        "documentId": {
+          "__rl": true,
+          "mode": "url",
+          "value": "COLE_AQUI_A_URL_DA_PLANILHA"
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "name",
+          "value": "Leads"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {}
+        },
         "options": {}
       },
       "id": "b1a1c0de-0003-4000-8000-000000000003",
       "name": "Planilha Mestre (CRM)",
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.5,
-      "position": [680, 300]
+      "position": [
+        680,
+        300
+      ]
     },
     {
       "parameters": {
@@ -52,15 +74,83 @@
       "name": "Alerta WhatsApp do vendedor",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [900, 300],
+      "position": [
+        900,
+        300
+      ],
       "notes": "Opções: Evolution API (self-hosted, grátis), CallMeBot (grátis, uso pessoal) ou Z-API/WPPConnect. Ajuste URL e formato do corpo conforme a API escolhida."
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "COLE_AQUI_A_URL_DO_PINAS_KIT",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer COLE_AQUI_O_TOKEN"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify(Object.assign({ tipo: 'lead', origem: 'lp-pinas', cliente: 'SLUG' }, $json)) }}",
+        "options": {}
+      },
+      "id": "b1a1c0de-0005-4000-8000-000000000005",
+      "name": "Enviar ao Pinas Kit",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        680,
+        480
+      ],
+      "notes": "Opcional. Se o Pinas Kit for o CRM principal, pode desativar o nó da planilha."
     }
   ],
   "connections": {
-    "Webhook LP": { "main": [[{ "node": "Normalizar lead", "type": "main", "index": 0 }]] },
-    "Normalizar lead": { "main": [[{ "node": "Planilha Mestre (CRM)", "type": "main", "index": 0 }]] },
-    "Planilha Mestre (CRM)": { "main": [[{ "node": "Alerta WhatsApp do vendedor", "type": "main", "index": 0 }]] }
+    "Webhook LP": {
+      "main": [
+        [
+          {
+            "node": "Normalizar lead",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Normalizar lead": {
+      "main": [
+        [
+          {
+            "node": "Planilha Mestre (CRM)",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Enviar ao Pinas Kit",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Planilha Mestre (CRM)": {
+      "main": [
+        [
+          {
+            "node": "Alerta WhatsApp do vendedor",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
   },
-  "settings": { "executionOrder": "v1" },
+  "settings": {
+    "executionOrder": "v1"
+  },
   "pinData": {}
 }
