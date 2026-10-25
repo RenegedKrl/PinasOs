@@ -8,4 +8,7 @@ clientes/*
 !clientes/_modelo-padrao/
 !clientes/_modelo-padrao/**
 *.mp3
+!assets-globais/sfx/*.mp3
 *.mp4
+comercial/pipeline-prospeccao.csv
+comercial/propostas/

@@ -2,36 +2,34 @@
 description: Constrói a Landing Page oficial do cliente com UTMs, Pixel e triagem
 argument-hint: <slug>
 ---
-# Skill 2: Landing Page oficial (PageSpeed 90+)
+# Skill 2: Landing Page oficial
 
 Cliente: `$ARGUMENTS`
 
-## Etapa 1 — Contexto
+## Etapa 1 — Contexto e pendências
 1. Leia `clientes/$ARGUMENTS/contexto/contexto-empresa.md` e `design-system.md`.
-2. Se existir protótipo em `clientes/$ARGUMENTS/site/index.html`, parta dele.
-3. Consulte `assets-globais/inspiracoes-lp/` (só os `.md` relevantes ao nicho).
-4. Liste ao usuário o que falta de dado real (depoimentos, fotos, números, Pixel ID, GTM ID, número de WhatsApp). Use placeholders visíveis `[...]` e siga.
+2. Se existir `clientes/$ARGUMENTS/site/lp-conteudo.json` (do protótipo), parta dele.
+3. Liste para o usuário, em uma mensagem, o que ainda falta de dado real: depoimentos, fotos, números, nome/formação do responsável, Pixel ID, GTM ID, URL do webhook n8n, WhatsApp, CNPJ, e-mail LGPD. Siga com placeholders enquanto isso.
 
-## Etapa 2 — Estrutura (7 dobras)
-1. **Hero:** promessa específica + prova social + CTA, tudo visível no mobile sem rolar.
-2. **Contraste:** o jeito frustrante de hoje vs. o serviço do cliente.
-3. **Serviços/benefícios** em grid com hierarquia.
-4. **Autoridade:** quem atende, estrutura, certificações (só reais).
-5. **Prova social:** depoimentos que quebram objeção de preço, tempo e confiança.
-6. **Triagem:** quiz de 3 passos → POST no webhook (n8n) → abre WhatsApp com a mensagem preenchida.
-7. **FAQ (5 objeções) + rodapé** com aviso de privacidade.
+## Etapa 2 — Conteúdo (`lp-conteudo.json`)
+Estrutura que o gerador monta (7 dobras): hero → contraste → serviços (bento) → autoridade → depoimentos → triagem → FAQ + CTA final + rodapé.
+- **Hero:** cena desejada no H1 (não o nome do serviço) + garantia/objeção no subtítulo + prova social real.
+- **Triagem:** pergunta 1 = interesse (segmenta o CRM), pergunta 2 = urgência (prioriza atendimento). Use as do nicho em `assets-globais/inspiracoes-lp/nichos.md`.
+- **FAQ:** as 5 maiores objeções.
+- **Imagens:** salve em `clientes/$ARGUMENTS/site/img/` em WebP (converta com `ffmpeg -i foto.jpg -q:v 80 -vf scale=1200:-1 img/hero.webp`) e referencie como `img/hero.webp`.
+- **Rastreamento:** preencha `rastreamento.pixelId`, `gtmId`, `webhookUrl` quando o usuário fornecer.
 
-## Etapa 3 — Código
-- HTML + CSS próprios, JS mínimo e sem dependências. Imagens em WebP com `width`/`height` e `loading="lazy"` (exceto a do hero).
-- Bloco de configuração no topo do script: `PIXEL_ID`, `GTM_ID`, `WEBHOOK_URL`, `WHATSAPP` — vazio = desativado sem erro.
-- Captura de UTMs (`utm_source`, `utm_medium`, `utm_campaign`, `utm_content`, `utm_term`) + `fbclid`/`gclid`, guardadas em `sessionStorage` e enviadas no webhook.
-- Eventos: `fbq('track','Lead')` e `dataLayer.push({event:'lead'})` ao concluir a triagem; `Contact` ao clicar no WhatsApp.
-- Remover `noindex` e a faixa de protótipo na versão oficial.
+## Etapa 3 — Gerar e verificar
+1. `node motor-local/gerar-lp.js $ARGUMENTS --oficial`
+2. `node motor-local/verificar-lp.js $ARGUMENTS --oficial` — precisa sair **APROVADA** (sem placeholders, sem noindex).
+3. Se a página já estiver publicada: `node motor-local/diagnosticar-lead.js <URL> $ARGUMENTS-lp` e confirme performance mobile ≥ 90.
 
-## Etapa 4 — Testes (Playwright)
-- Sem rolagem horizontal em 390px; prints desktop/mobile em `clientes/$ARGUMENTS/site/`.
-- Simule a triagem completa e confira se o link `wa.me` gerado contém as respostas e as UTMs de uma URL de teste `?utm_source=teste`.
-- Se houver URL pública: rode `node motor-local/diagnosticar-lead.js <URL> $ARGUMENTS-lp` e confira nota ≥ 90.
+## Etapa 4 — Publicação (o usuário executa)
+Explique as opções:
+- **Cloudflare Pages / Netlify** (grátis e permite uso comercial): arrastar a pasta `site/`.
+- **Vercel**: `cd clientes/$ARGUMENTS/site && vercel --prod` (plano Hobby é só para uso não comercial).
+- Apontar o domínio do cliente (registro CNAME) e conferir HTTPS.
+Depois de publicar: teste a triagem com `?utm_source=teste&utm_campaign=teste` e confirme que o lead chegou na planilha do n8n e o evento `Lead` no Gerenciador de Eventos da Meta.
 
 ## Histórico de aprendizado
 - Sempre incluir captura de UTMs nos formulários para alimentar o CRM.

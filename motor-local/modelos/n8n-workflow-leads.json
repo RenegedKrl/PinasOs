@@ -1,0 +1,66 @@
+{
+  "name": "Pinas — Leads da LP para Planilha + Alerta",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "pinas-lead-SLUG",
+        "responseMode": "onReceived",
+        "options": { "allowedOrigins": "*" }
+      },
+      "id": "b1a1c0de-0001-4000-8000-000000000001",
+      "name": "Webhook LP",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [240, 300],
+      "webhookId": "b1a1c0de-0001-4000-8000-0000000000aa"
+    },
+    {
+      "parameters": {
+        "jsCode": "// A LP envia texto puro (sendBeacon). Normaliza tudo para uma linha da planilha.\nconst out = [];\nfor (const item of $input.all()) {\n  let b = item.json.body ?? item.json;\n  if (typeof b === 'string') { try { b = JSON.parse(b); } catch (e) { b = {}; } }\n  const o = b.origem || {};\n  const r = b.respostas || {};\n  let tel = String(b.telefone || '').replace(/\\D/g, '');\n  if (tel && !tel.startsWith('55')) tel = '55' + tel;\n  const chaves = Object.keys(r);\n  out.push({ json: {\n    data: new Date(b.data || Date.now()).toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' }),\n    nome: String(b.nome || '').slice(0, 80),\n    telefone: tel,\n    resposta1: r[chaves[0]] || '',\n    resposta2: r[chaves[1]] || '',\n    utm_source: o.utm_source || 'direto',\n    utm_medium: o.utm_medium || '',\n    utm_campaign: o.utm_campaign || '',\n    utm_content: o.utm_content || '',\n    utm_term: o.utm_term || '',\n    status: 'Novo lead',\n    valor: '',\n    motivo_perda: '',\n    link_whatsapp: tel ? 'https://wa.me/' + tel : ''\n  }});\n}\nreturn out;"
+      },
+      "id": "b1a1c0de-0002-4000-8000-000000000002",
+      "name": "Normalizar lead",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [460, 300]
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": { "__rl": true, "mode": "url", "value": "COLE_AQUI_A_URL_DA_PLANILHA" },
+        "sheetName": { "__rl": true, "mode": "name", "value": "Leads" },
+        "columns": { "mappingMode": "autoMapInputData", "value": {} },
+        "options": {}
+      },
+      "id": "b1a1c0de-0003-4000-8000-000000000003",
+      "name": "Planilha Mestre (CRM)",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [680, 300]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "COLE_AQUI_A_URL_DA_API_DE_WHATSAPP",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ numero: 'NUMERO_DO_VENDEDOR', mensagem: '🔔 Novo lead: ' + $json.nome + '\\nInteresse: ' + $json.resposta1 + ' (' + $json.resposta2 + ')\\nOrigem: ' + $json.utm_source + ' / ' + $json.utm_campaign + '\\nResponder agora: ' + $json.link_whatsapp }) }}",
+        "options": {}
+      },
+      "id": "b1a1c0de-0004-4000-8000-000000000004",
+      "name": "Alerta WhatsApp do vendedor",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [900, 300],
+      "notes": "Opções: Evolution API (self-hosted, grátis), CallMeBot (grátis, uso pessoal) ou Z-API/WPPConnect. Ajuste URL e formato do corpo conforme a API escolhida."
+    }
+  ],
+  "connections": {
+    "Webhook LP": { "main": [[{ "node": "Normalizar lead", "type": "main", "index": 0 }]] },
+    "Normalizar lead": { "main": [[{ "node": "Planilha Mestre (CRM)", "type": "main", "index": 0 }]] },
+    "Planilha Mestre (CRM)": { "main": [[{ "node": "Alerta WhatsApp do vendedor", "type": "main", "index": 0 }]] }
+  },
+  "settings": { "executionOrder": "v1" },
+  "pinData": {}
+}

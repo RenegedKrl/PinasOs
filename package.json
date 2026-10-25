@@ -4,10 +4,16 @@
   "private": true,
   "description": "Sistema operacional da agência Pinas: Claude Code + scripts locais gratuitos",
   "scripts": {
-    "diagnosticar": "node motor-local/diagnosticar-lead.js",
-    "criativos": "node motor-local/renderizar-criativos.js",
+    "testar": "node motor-local/testar-sistema.js",
     "novo-cliente": "node motor-local/novo-cliente.js",
-    "testar": "node motor-local/testar-sistema.js"
+    "diagnosticar": "node motor-local/diagnosticar-lead.js",
+    "lp": "node motor-local/gerar-lp.js",
+    "verificar": "node motor-local/verificar-lp.js",
+    "demo": "node motor-local/gravar-demo-lp.js",
+    "criativos": "node motor-local/renderizar-criativos.js",
+    "motion": "node motor-local/renderizar-motion.js",
+    "sfx": "node motor-local/gerar-sfx.js",
+    "relatorio": "node motor-local/relatorio-mensal.js"
   },
   "dependencies": {
     "playwright": "^1.48.0"

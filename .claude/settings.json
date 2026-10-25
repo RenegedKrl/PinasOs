@@ -1,0 +1,30 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node motor-local/diagnosticar-lead.js:*)",
+      "Bash(node motor-local/renderizar-criativos.js:*)",
+      "Bash(node motor-local/renderizar-motion.js:*)",
+      "Bash(node motor-local/gerar-lp.js:*)",
+      "Bash(node motor-local/verificar-lp.js:*)",
+      "Bash(node motor-local/gravar-demo-lp.js:*)",
+      "Bash(node motor-local/novo-cliente.js:*)",
+      "Bash(node motor-local/relatorio-mensal.js:*)",
+      "Bash(node motor-local/gerar-sfx.js:*)",
+      "Bash(node motor-local/testar-sistema.js:*)",
+      "Bash(python3 motor-local/gerar-locucao.py:*)",
+      "Bash(python motor-local/gerar-locucao.py:*)",
+      "Bash(jq:*)",
+      "Bash(ffprobe:*)",
+      "Read(clientes/**)",
+      "Edit(clientes/**)",
+      "Write(clientes/**)",
+      "Edit(assets-globais/**)",
+      "Edit(comercial/**)",
+      "Edit(APRENDIZADOS.md)"
+    ],
+    "deny": [
+      "Bash(vercel --prod:*)",
+      "Read(.env)"
+    ]
+  }
+}

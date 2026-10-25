@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clínica Sorriso Vivo — Implantes e lentes em Campinas</title>
+<meta name="description" content="Avaliação com plano de tratamento e valor fechado na primeira consulta. Atendimento no Cambuí, Campinas.">
+<meta name="robots" content="noindex,nofollow">
+<meta property="og:title" content="Clínica Sorriso Vivo — Implantes e lentes em Campinas">
+<meta property="og:description" content="Avaliação com plano de tratamento e valor fechado na primeira consulta. Atendimento no Cambuí, Campinas.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--p:#0F766E;--pt:#FFFFFF;--e:#14201E;--c:#F7F5F0;--s:#E4E0D6;--ft:'Sora',system-ui,sans-serif;--fx:'Inter',system-ui,sans-serif;--r:14px}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--fx);color:var(--e);background:var(--c);line-height:1.6;font-size:17px;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--ft);line-height:1.1;letter-spacing:-.02em}
+h2{font-size:clamp(28px,4.5vw,44px);margin-bottom:16px}
+img{max-width:100%;display:block;height:auto}
+a{color:inherit}
+.w{max-width:1120px;margin:0 auto;padding:0 20px}
+section{padding:clamp(64px,9vw,112px) 0}
+.eyebrow{display:inline-block;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--p);margin-bottom:14px}
+.lead{font-size:clamp(17px,2vw,20px);opacity:.8;max-width:620px}
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--p);color:var(--pt);font-weight:700;font-size:17px;padding:17px 28px;border-radius:999px;text-decoration:none;border:0;cursor:pointer;transition:transform .15s,box-shadow .15s;box-shadow:0 8px 24px -8px var(--p)}
+.btn:hover{transform:translateY(-2px);box-shadow:0 14px 30px -10px var(--p)}
+.btn svg{transition:transform .15s}.btn:hover svg{transform:translateX(3px)}
+.btn-sec{background:transparent;color:var(--e);box-shadow:inset 0 0 0 2px var(--s)}
+.proto{background:#FDE68A;color:#78350F;text-align:center;font-size:13px;padding:6px 12px;font-weight:600}
+.topo{background:var(--e);color:var(--c);font-size:14px;padding:10px 0;text-align:center}
+.topo span{display:inline-flex;align-items:center;gap:6px}
+header{padding:18px 0;border-bottom:1px solid var(--s);background:var(--c)}
+header .w{display:flex;justify-content:space-between;align-items:center;gap:16px}
+.logo{font-family:var(--ft);font-weight:800;font-size:22px;text-decoration:none}
+.logo img{height:40px;width:auto}
+header .btn{padding:11px 20px;font-size:15px}
+.hero{padding:clamp(48px,7vw,96px) 0}
+.hero .w{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+.hero h1{font-size:clamp(36px,6vw,64px);margin-bottom:20px}
+.hero .lead{margin-bottom:32px}
+.hero-img{border-radius:24px;overflow:hidden;aspect-ratio:4/5;background:var(--s)}
+.hero-img img{width:100%;height:100%;object-fit:cover}
+.prova{display:flex;align-items:center;gap:12px;margin-top:28px;font-size:15px}
+.prova .estrelas{display:flex;color:#F59E0B}
+.contraste{background:var(--e);color:var(--c)}
+.contraste .grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:40px}
+.col{border-radius:var(--r);padding:32px}
+.col h3{font-size:20px;margin-bottom:18px}
+.col.antes{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1)}
+.col.depois{background:var(--p);color:var(--pt)}
+.col li{list-style:none;display:flex;gap:12px;padding:8px 0;align-items:flex-start}
+.col li svg{flex:none;margin-top:3px}
+.col.antes li svg{opacity:.5}
+.bento{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+.card{background:#fff;border:1px solid var(--s);border-radius:var(--r);padding:28px}
+.card h3{font-size:21px;margin-bottom:10px}
+.card p{opacity:.75}
+.card.destaque{grid-column:span 2;grid-row:span 2;background:var(--p);color:var(--pt);border:0;display:flex;flex-direction:column;justify-content:flex-end;padding:40px;min-height:320px}
+.bento .card:last-child:nth-child(5){grid-column:span 2}
+.sem-img .w{grid-template-columns:1fr!important;max-width:820px}
+.card.destaque h3{font-size:clamp(26px,3vw,34px)}
+.card.destaque p{opacity:.9;font-size:18px}
+.aut .w{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center}
+.aut-img{border-radius:24px;overflow:hidden;aspect-ratio:1;background:var(--s)}
+.aut-img img{width:100%;height:100%;object-fit:cover}
+.numeros{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px}
+.numeros strong{display:block;font-family:var(--ft);font-size:clamp(30px,4vw,42px);color:var(--p);line-height:1}
+.numeros span{font-size:14px;opacity:.7}
+.dep{background:#fff}
+.deps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+.dep-card{border:1px solid var(--s);border-radius:var(--r);padding:28px;display:flex;flex-direction:column;gap:18px;background:var(--c)}
+.dep-card .estrelas{display:flex;color:#F59E0B}
+.dep-card footer{margin-top:auto;font-size:14px}
+.dep-card footer b{display:block;font-size:16px}
+.triagem{background:var(--e);color:var(--c)}
+.tri-box{max-width:640px;margin:40px auto 0;background:var(--c);color:var(--e);border-radius:24px;padding:clamp(24px,5vw,44px)}
+.barra{height:6px;background:var(--s);border-radius:9px;margin-bottom:28px;overflow:hidden}
+.barra i{display:block;height:100%;width:33%;background:var(--p);transition:width .3s}
+.passo{display:none}.passo.ativo{display:block}
+.passo h3{font-size:24px;margin-bottom:20px}
+.opcoes{display:grid;gap:10px}
+.opcoes button{text-align:left;font:inherit;font-weight:600;padding:16px 18px;border-radius:12px;border:2px solid var(--s);background:#fff;cursor:pointer;transition:border-color .15s}
+.opcoes button:hover,.opcoes button:focus-visible{border-color:var(--p);outline:0}
+.campo{display:block;margin-bottom:14px}
+.campo span{display:block;font-size:14px;font-weight:600;margin-bottom:6px}
+.campo input{width:100%;font:inherit;padding:14px 16px;border-radius:12px;border:2px solid var(--s);background:#fff}
+.campo input:focus{outline:0;border-color:var(--p)}
+.lgpd{display:flex;gap:10px;font-size:14px;margin:6px 0 20px;align-items:flex-start}
+.lgpd input{margin-top:4px;width:18px;height:18px;accent-color:var(--p);flex:none}
+.voltar{background:none;border:0;font:inherit;font-size:14px;opacity:.6;cursor:pointer;margin-top:16px;text-decoration:underline}
+.tri-box .btn{width:100%;justify-content:center}
+.faq-lista{max-width:760px;margin:40px auto 0}
+details{border-bottom:1px solid var(--s);padding:20px 0}
+summary{font-weight:700;font-size:18px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px}
+summary::after{content:'+';font-size:24px;line-height:1;color:var(--p)}
+details[open] summary::after{content:'−'}
+details p{margin-top:12px;opacity:.8}
+.final{text-align:center}
+.final .lead{margin:0 auto 32px}
+.rodape{background:var(--e);color:var(--c);padding:48px 0 32px;font-size:15px}
+.rodape .w{display:grid;grid-template-columns:2fr 1fr 1fr;gap:32px}
+.rodape p{opacity:.75;display:flex;gap:8px;align-items:flex-start;margin-bottom:8px}
+.rodape small{grid-column:1/-1;opacity:.5;border-top:1px solid rgba(255,255,255,.1);padding-top:24px;margin-top:8px}
+.flutuante{position:fixed;right:18px;bottom:18px;width:60px;height:60px;border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;box-shadow:0 10px 30px rgba(0,0,0,.25);z-index:50}
+.centro{text-align:center}.centro .lead{margin:0 auto}
+@media (max-width:860px){
+  .hero .w,.aut .w,.contraste .grid{grid-template-columns:1fr}
+  .hero-img{aspect-ratio:4/3}
+  .bento,.deps{grid-template-columns:1fr}
+  .bento .card:last-child:nth-child(5){grid-column:auto}
+  .card.destaque{grid-column:auto;grid-row:auto;min-height:240px;padding:32px}
+  .rodape .w{grid-template-columns:1fr}
+  header .btn{display:none}
+  .hero{padding-top:24px}
+  .hero .btn{width:100%;justify-content:center}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="proto">Protótipo de demonstração criado pela Pinas — não é o site oficial de Clínica Sorriso Vivo</div>
+<div class="topo"><span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg> Atendimento no Cambuí, Campinas — vagas de avaliação esta semana</span></div>
+<header><div class="w">
+  <a class="logo" href="./">Clínica Sorriso Vivo</a>
+  <a class="btn" href="#triagem" data-cta="header">Quero minha avaliação</a>
+</div></header>
+
+<main>
+<section class="hero sem-img"><div class="w">
+  <div>
+    <span class="eyebrow">Implantes e lentes de contato dental</span>
+    <h1>Volte a sorrir em foto sem esconder os dentes</h1>
+    <p class="lead">Na primeira consulta você sai com o <strong>plano de tratamento e o valor fechado</strong> — sem surpresa no meio do caminho.</p>
+    <a class="btn" href="#triagem" data-cta="hero">Quero minha avaliação <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    <div class="prova"><span class="estrelas"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z" fill="currentColor"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z" fill="currentColor"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z" fill="currentColor"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z" fill="currentColor"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z" fill="currentColor"/></svg></span><span><strong>[NOTA REAL]</strong> no Google · [Nº REAL] avaliações</span></div>
+  </div>
+  
+</div></section>
+
+<section class="contraste"><div class="w">
+  <h2>Você não precisa passar por isso de novo</h2>
+  <div class="grid">
+    <div class="col antes"><h3>O que você já viveu</h3><ul><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg><span>Orçamento que muda depois que o tratamento começa</span></li><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg><span>Esperar 40 minutos na recepção</span></li><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg><span>Sair sem entender o que vai ser feito</span></li></ul></div>
+    <div class="col depois"><h3>Na Sorriso Vivo</h3><ul><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Valor fechado por escrito antes de começar</span></li><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Horário marcado é horário cumprido</span></li><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Plano explicado com fotos do seu próprio sorriso</span></li></ul></div>
+  </div>
+</div></section>
+
+<section><div class="w">
+  <span class="eyebrow">Tratamentos</span>
+  <h2>O que fazemos melhor</h2>
+  <div class="bento"><article class="card destaque"><h3>Implantes dentários</h3><p>Recupere a mastigação e a confiança com planejamento digital e acompanhamento até a coroa final.</p></article><article class="card"><h3>Lentes de contato dental</h3><p>Prévia digital do resultado antes de qualquer desgaste.</p></article><article class="card"><h3>Clareamento</h3><p>Em consultório ou caseiro supervisionado.</p></article><article class="card"><h3>Ortodontia invisível</h3><p>Alinhadores transparentes, sem bráquetes.</p></article><article class="card"><h3>Limpeza e prevenção</h3><p>Retorno programado para você não precisar lembrar.</p></article></div>
+</div></section>
+
+<section class="aut sem-img" style="background:#fff"><div class="w">
+  
+  <div>
+    <span class="eyebrow">Quem cuida de você</span>
+    <h2>[NOME DO(A) DENTISTA RESPONSÁVEL]</h2>
+    <p class="lead">[FORMAÇÃO, ESPECIALIZAÇÕES E TEMPO DE EXPERIÊNCIA REAIS]</p>
+    <div class="numeros"><div><strong>[X]</strong><span>anos de clínica</span></div><div><strong>[X]</strong><span>implantes realizados</span></div><div><strong>[X]</strong><span>nota no Google</span></div></div>
+  </div>
+</div></section>
+
+<section class="dep"><div class="w centro">
+  <h2>Quem já passou por aqui</h2>
+  <div class="deps" style="text-align:left"><figure class="dep-card"><span class="estrelas"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z" fill="currentColor"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z" fill="currentColor"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z" fill="currentColor"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z" fill="currentColor"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z" fill="currentColor"/></svg></span><blockquote>[DEPOIMENTO REAL — de preferência sobre preço ou medo]</blockquote><footer><b>[NOME REAL]</b>Implante · [bairro]</footer></figure><figure class="dep-card"><span class="estrelas"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z" fill="currentColor"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z" fill="currentColor"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z" fill="currentColor"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z" fill="currentColor"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z" fill="currentColor"/></svg></span><blockquote>[DEPOIMENTO REAL — sobre atendimento/pontualidade]</blockquote><footer><b>[NOME REAL]</b>Lentes · [bairro]</footer></figure><figure class="dep-card"><span class="estrelas"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z" fill="currentColor"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z" fill="currentColor"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z" fill="currentColor"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z" fill="currentColor"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z" fill="currentColor"/></svg></span><blockquote>[DEPOIMENTO REAL — sobre resultado]</blockquote><footer><b>[NOME REAL]</b>Clareamento · [bairro]</footer></figure></div>
+</div></section>
+
+<section class="triagem" id="triagem"><div class="w centro">
+  <h2>Agende sua avaliação em 30 segundos</h2>
+  <p class="lead">Responda 3 perguntas e a nossa equipe já te chama sabendo do que você precisa.</p>
+  <div class="tri-box" style="text-align:left">
+    <div class="barra"><i></i></div>
+    <div class="passo ativo" data-passo="0" data-chave="objetivo">
+      <h3>O que você quer resolver?</h3>
+      <div class="opcoes"><button type="button" data-valor="Implante / dente faltando">Implante / dente faltando</button><button type="button" data-valor="Lentes ou estética do sorriso">Lentes ou estética do sorriso</button><button type="button" data-valor="Clareamento">Clareamento</button><button type="button" data-valor="Alinhar os dentes">Alinhar os dentes</button><button type="button" data-valor="Ainda não sei">Ainda não sei</button></div>
+      
+    </div><div class="passo" data-passo="1" data-chave="prazo">
+      <h3>Para quando você quer começar?</h3>
+      <div class="opcoes"><button type="button" data-valor="Esta semana">Esta semana</button><button type="button" data-valor="Este mês">Este mês</button><button type="button" data-valor="Só estou pesquisando">Só estou pesquisando</button></div>
+      <button type="button" class="voltar">Voltar</button>
+    </div>
+    <form class="passo" data-passo="2" id="form-lead" novalidate>
+      <h3>Para quem a nossa equipe vai responder?</h3>
+      <label class="campo"><span>Seu nome</span><input name="nome" autocomplete="given-name" required></label>
+      <label class="campo"><span>WhatsApp com DDD</span><input name="telefone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(11) 90000-0000" required></label>
+      <label class="lgpd"><input type="checkbox" name="consentimento" required data-consentimento><span>Concordo em ser contatado(a) pela Clínica Sorriso Vivo e li o <a href="privacidade.html" target="_blank">aviso de privacidade</a>.</span></label>
+      <button class="btn" type="submit"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.6-4.7A8.5 8.5 0 1 1 7.8 19.6z"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1.2-1.4-2-1-1 .8a4 4 0 0 1-2.1-2.1l.8-1-1-2z" fill="currentColor" stroke="none"/></svg> Continuar no WhatsApp</button>
+      <button type="button" class="voltar">Voltar</button>
+    </form>
+  </div>
+</div></section>
+
+<section><div class="w">
+  <h2 class="centro">Perguntas frequentes</h2>
+  <div class="faq-lista"><details><summary>A avaliação é paga?</summary><p>[RESPOSTA REAL DA CLÍNICA]</p></details><details><summary>Vocês parcelam?</summary><p>[CONDIÇÕES REAIS]</p></details><details><summary>Implante dói?</summary><p>O procedimento é feito com anestesia local. A maioria dos pacientes relata desconforto leve nos primeiros dias, controlado com medicação.</p></details><details><summary>Quanto tempo leva o tratamento?</summary><p>Depende do caso — na avaliação você recebe o cronograma completo por escrito.</p></details><details><summary>Tem estacionamento?</summary><p>[INFORMAÇÃO REAL]</p></details></div>
+</div></section>
+
+<section class="final" style="background:#fff"><div class="w">
+  <h2>Seu próximo sorriso em foto começa com uma conversa</h2>
+  <p class="lead">Sem compromisso. Você sai da avaliação sabendo exatamente o que fazer e quanto custa.</p>
+  <a class="btn" href="#triagem" data-cta="final">Agendar minha avaliação <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+</div></section>
+</main>
+
+<footer class="rodape"><div class="w">
+  <div>
+    <div class="logo" style="margin-bottom:14px">Clínica Sorriso Vivo</div>
+    <p><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg> [ENDEREÇO REAL], Cambuí — Campinas/SP</p>
+    <p><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> Seg a sex 8h–19h · Sáb 8h–12h</p>
+  </div>
+  <div>
+    <p><a href="https://wa.me/5519900000000?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Cl%C3%ADnica%20Sorriso%20Vivo%20e%20quero%20mais%20informa%C3%A7%C3%B5es." data-cta="rodape">WhatsApp</a></p>
+    <p><a href="tel:1930000000">(19) 3000-0000</a></p>
+    <p><a href="https://instagram.com/[perfil]" target="_blank" rel="noopener">Instagram</a></p>
+  </div>
+  <div><p><a href="privacidade.html">Aviso de privacidade</a></p></div>
+  <small>© 2026 Clínica Sorriso Vivo</small>
+</div></footer>
+
+<a class="flutuante" href="https://wa.me/5519900000000?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Cl%C3%ADnica%20Sorriso%20Vivo%20e%20quero%20mais%20informa%C3%A7%C3%B5es." data-cta="flutuante" aria-label="Falar no WhatsApp"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.6-4.7A8.5 8.5 0 1 1 7.8 19.6z"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1.2-1.4-2-1-1 .8a4 4 0 0 1-2.1-2.1l.8-1-1-2z" fill="currentColor" stroke="none"/></svg></a>
+
+<script>
+// ===== CONFIGURAÇÃO (vazio = desativado) =====
+const CONFIG = {
+  PIXEL_ID: "",
+  GTM_ID: "",
+  WEBHOOK_URL: "",
+  WHATSAPP: "5519900000000",
+  EMPRESA: "Clínica Sorriso Vivo"
+};
+// =============================================
+
+if (CONFIG.PIXEL_ID) {
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', CONFIG.PIXEL_ID); fbq('track', 'PageView');
+}
+window.dataLayer = window.dataLayer || [];
+if (CONFIG.GTM_ID) {
+  (function(w,d,s,l,i){w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s);j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i;f.parentNode.insertBefore(j,f)})(window,document,'script','dataLayer',CONFIG.GTM_ID);
+}
+const evento = (meta, gtm, dados) => {
+  try { if (window.fbq) fbq('track', meta, dados || {}); } catch (e) {}
+  window.dataLayer.push(Object.assign({ event: gtm }, dados || {}));
+};
+
+// UTMs e IDs de clique: guardados na sessão para não se perderem ao navegar
+const CHAVES = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','fbclid','gclid'];
+const origem = (() => {
+  let salvo = {};
+  try { salvo = JSON.parse(sessionStorage.getItem('pinas_origem') || '{}'); } catch (e) {}
+  const q = new URLSearchParams(location.search);
+  CHAVES.forEach(k => { if (q.get(k)) salvo[k] = q.get(k); });
+  if (!salvo.pagina) salvo.pagina = location.href.split('?')[0];
+  if (!salvo.referrer && document.referrer) salvo.referrer = document.referrer;
+  try { sessionStorage.setItem('pinas_origem', JSON.stringify(salvo)); } catch (e) {}
+  return salvo;
+})();
+
+document.querySelectorAll('[data-cta]').forEach(a => a.addEventListener('click', () => {
+  if (a.href.includes('wa.me')) evento('Contact', 'clique_whatsapp', { local: a.dataset.cta });
+}));
+
+// Triagem em passos
+const passos = [...document.querySelectorAll('.passo')];
+const barra = document.querySelector('.barra i');
+const respostas = {};
+let atual = 0;
+const ir = n => {
+  passos[atual].classList.remove('ativo');
+  atual = n;
+  passos[atual].classList.add('ativo');
+  barra.style.width = ((atual + 1) / passos.length * 100) + '%';
+  const foco = passos[atual].querySelector('button, input');
+  if (foco) foco.focus({ preventScroll: true });
+};
+passos.forEach((p, i) => {
+  p.querySelectorAll('.opcoes button').forEach(b => b.addEventListener('click', () => {
+    respostas[p.dataset.chave] = b.dataset.valor;
+    if (i === 0) evento('ViewContent', 'triagem_inicio');
+    ir(i + 1);
+  }));
+  const v = p.querySelector('.voltar');
+  if (v) v.addEventListener('click', () => ir(i - 1));
+});
+
+const form = document.getElementById('form-lead');
+form.addEventListener('submit', async e => {
+  e.preventDefault();
+  const nome = form.nome.value.trim();
+  const tel = form.telefone.value.replace(/\D/g, '');
+  if (!nome) return form.nome.focus();
+  if (tel.length < 10) { form.telefone.setCustomValidity('Informe o WhatsApp com DDD'); form.telefone.reportValidity(); return; }
+  form.telefone.setCustomValidity('');
+  if (!form.consentimento.checked) { form.consentimento.reportValidity(); return; }
+
+  const lead = { nome, telefone: tel.startsWith('55') ? tel : '55' + tel, respostas, origem, empresa: CONFIG.EMPRESA, data: new Date().toISOString() };
+  evento('Lead', 'lead', { origem: origem.utm_source || 'direto' });
+
+  if (CONFIG.WEBHOOK_URL) {
+    const corpo = JSON.stringify(lead);
+    // sendBeacon sobrevive à troca de página; fetch como alternativa
+    const ok = navigator.sendBeacon && navigator.sendBeacon(CONFIG.WEBHOOK_URL, new Blob([corpo], { type: 'text/plain' }));
+    if (!ok) fetch(CONFIG.WEBHOOK_URL, { method: 'POST', body: corpo, keepalive: true, mode: 'no-cors' }).catch(() => {});
+  }
+
+  const linhas = ['Olá! Meu nome é ' + nome + '.'];
+  Object.values(respostas).forEach((r, i) => linhas.push(document.querySelectorAll('.passo h3')[i].innerText + ' ' + r));
+  if (origem.utm_campaign) linhas.push('(via ' + origem.utm_campaign + ')');
+  const url = 'https://wa.me/' + CONFIG.WHATSAPP + '?text=' + encodeURIComponent(linhas.join('\n'));
+  setTimeout(() => { location.href = url; }, 250);
+});
+</script>
+</body>
+</html>

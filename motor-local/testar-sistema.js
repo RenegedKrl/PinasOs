@@ -12,8 +12,9 @@ function checar(nome, fn, dica) {
     const info = fn();
     console.log(`✔ ${nome}${info ? ` — ${info}` : ''}`);
   } catch (err) {
-    falhas++;
-    console.log(`✘ ${nome}\n    ${dica}`);
+    const opcional = nome.includes('(opcional)');
+    if (!opcional) falhas++;
+    console.log(`${opcional ? '–' : '✘'} ${nome}\n    ${dica}`);
   }
 }
 const sh = cmd => execSync(cmd, { stdio: ['ignore', 'pipe', 'ignore'] }).toString().trim().split('\n')[0];
@@ -44,9 +45,15 @@ checar('Vercel CLI (opcional)', () => sh('vercel --version'), 'Opcional: npm ins
     const ok = ['teste-feed.png', 'teste-stories.png'].every(f => fs.existsSync(path.join(dir, 'fundos', f)));
     if (!ok) throw new Error();
     console.log('✔ Renderizador de fundos — 2 PNGs gerados');
+    const site = path.join(raiz, 'clientes', slug, 'site');
+    fs.mkdirSync(site, { recursive: true });
+    fs.copyFileSync(path.join(raiz, 'clientes', '_modelo-padrao', 'site', 'lp-conteudo.exemplo.json'), path.join(site, 'lp-conteudo.json'));
+    execSync(`node "${path.join(__dirname, 'gerar-lp.js')}" ${slug}`, { stdio: 'ignore' });
+    execSync(`node "${path.join(__dirname, 'verificar-lp.js')}" ${slug}`, { stdio: 'ignore' });
+    console.log('✔ Gerador e verificador de LP — página de exemplo aprovada');
   } catch {
     falhas++;
-    console.log('✘ Renderizador de fundos\n    Rode: npx playwright install chromium');
+    console.log('✘ Teste do motor (Playwright)\n    Rode: npx playwright install chromium');
   } finally {
     fs.rmSync(path.join(raiz, 'clientes', slug), { recursive: true, force: true });
   }

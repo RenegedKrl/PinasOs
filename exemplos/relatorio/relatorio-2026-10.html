@@ -1,0 +1,36 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Relatório outubro de 2026 — demo</title>
+<style>
+:root{--p:#0F766E;--e:#1C1917;--s:#E7E5E4}
+body{font-family:system-ui,-apple-system,sans-serif;color:var(--e);background:#FAFAF9;margin:0;padding:40px 20px;line-height:1.5}
+.w{max-width:900px;margin:0 auto}
+header{border-bottom:3px solid var(--p);padding-bottom:16px;margin-bottom:32px}
+header small{text-transform:uppercase;letter-spacing:.08em;color:var(--p);font-weight:700}
+h1{margin:4px 0 0;font-size:32px}h2{font-size:20px;margin:40px 0 12px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+.kpi{background:#fff;border:1px solid var(--s);border-radius:12px;padding:18px}
+.kpi span{font-size:13px;color:#57534E;display:block}.kpi strong{font-size:28px;display:block;margin:4px 0}.kpi small{color:#78716C}
+.funil{display:flex;gap:6px;align-items:stretch}.funil div{flex:1;background:var(--p);color:#fff;padding:14px;border-radius:8px;text-align:center}
+.funil div:nth-child(2){opacity:.8}.funil div:nth-child(3){opacity:.6}
+table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--s);border-radius:12px;overflow:hidden;font-size:15px}
+th,td{padding:10px 14px;text-align:right;border-bottom:1px solid var(--s)}th:first-child,td:first-child{text-align:left}
+th{background:#F5F5F4;font-size:13px}
+.alerta{background:#FEF3C7;border-left:4px solid #D97706;padding:12px 16px;border-radius:6px;margin:8px 0}
+footer{margin-top:48px;font-size:13px;color:#78716C}
+@media print{body{background:#fff;padding:0}}
+</style></head><body><div class="w">
+<header><small>Pinas · Relatório mensal</small><h1>demo — outubro de 2026</h1></header>
+<div class="kpis">
+<div class="kpi"><span>Investimento em anúncios</span><strong>R$ 1.500,00</strong></div>
+<div class="kpi"><span>Leads</span><strong>4</strong><small>CPL R$ 375,00</small></div>
+<div class="kpi"><span>Vendas</span><strong>1</strong><small>CAC R$ 1.500,00</small></div>
+<div class="kpi"><span>Faturamento rastreado</span><strong>R$ 4.500,00</strong><small>ROAS 3,00x</small></div>
+</div>
+<h2>Funil</h2>
+<div class="funil"><div><b>4</b><br>leads</div><div><b>2</b><br>agendados (50,0%)</div><div><b>1</b><br>vendas (25,0%)</div></div>
+<h2>Pontos de atenção</h2><div class="alerta">1 leads ainda estão como "Novo lead" — a equipe precisa atualizar o CRM.</div>
+<h2>Por origem</h2><table><tr><th></th><th>Leads</th><th>Vendas</th><th>Conversão</th><th>Receita</th></tr><tr><td>meta</td><td>2</td><td>1</td><td>50,0%</td><td>R$ 4.500,00</td></tr><tr><td>google</td><td>1</td><td>0</td><td>0,0%</td><td>R$ 0,00</td></tr><tr><td>direto</td><td>1</td><td>0</td><td>0,0%</td><td>R$ 0,00</td></tr></table>
+<h2>Por campanha</h2><table><tr><th></th><th>Leads</th><th>Vendas</th><th>Conversão</th><th>Receita</th></tr><tr><td>implante-out</td><td>1</td><td>1</td><td>100,0%</td><td>R$ 4.500,00</td></tr><tr><td>lentes-out</td><td>1</td><td>0</td><td>0,0%</td><td>R$ 0,00</td></tr><tr><td>pesquisa</td><td>1</td><td>0</td><td>0,0%</td><td>R$ 0,00</td></tr><tr><td>(sem)</td><td>1</td><td>0</td><td>0,0%</td><td>R$ 0,00</td></tr></table>
+<h2>Por interesse (triagem)</h2><table><tr><th></th><th>Leads</th><th>Vendas</th><th>Conversão</th><th>Receita</th></tr><tr><td>Implante</td><td>2</td><td>1</td><td>50,0%</td><td>R$ 4.500,00</td></tr><tr><td>Lentes</td><td>1</td><td>0</td><td>0,0%</td><td>R$ 0,00</td></tr><tr><td>Clareamento</td><td>1</td><td>0</td><td>0,0%</td><td>R$ 0,00</td></tr></table>
+<h2>Motivos de perda</h2><table><tr><th>Motivo</th><th>Qtd.</th></tr><tr><td>preço</td><td>1</td></tr></table>
+<footer>Gerado automaticamente a partir do CRM em 25/10/2026. Faturamento considera apenas vendas registradas no CRM com valor preenchido.</footer>
+</div></body></html>

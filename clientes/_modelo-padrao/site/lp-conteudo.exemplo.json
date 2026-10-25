@@ -1,0 +1,99 @@
+{
+  "marca": {
+    "nome": "Clínica Sorriso Vivo",
+    "corPrimaria": "#0F766E",
+    "corPrimariaTexto": "#FFFFFF",
+    "corEscura": "#14201E",
+    "corClara": "#F7F5F0",
+    "corSuave": "#E4E0D6",
+    "fonteTitulo": "Sora",
+    "fonteTexto": "Inter",
+    "logo": null
+  },
+  "seo": {
+    "titulo": "Clínica Sorriso Vivo — Implantes e lentes em Campinas",
+    "descricao": "Avaliação com plano de tratamento e valor fechado na primeira consulta. Atendimento no Cambuí, Campinas."
+  },
+  "contato": {
+    "whatsapp": "5519900000000",
+    "telefone": "(19) 3000-0000",
+    "endereco": "[ENDEREÇO REAL], Cambuí — Campinas/SP",
+    "horario": "Seg a sex 8h–19h · Sáb 8h–12h",
+    "instagram": "https://instagram.com/[perfil]",
+    "email": null,
+    "cnpj": null
+  },
+  "rastreamento": { "pixelId": "", "gtmId": "", "webhookUrl": "" },
+  "topo": { "texto": "Atendimento no Cambuí, Campinas — vagas de avaliação esta semana" },
+  "hero": {
+    "eyebrow": "Implantes e lentes de contato dental",
+    "titulo": "Volte a sorrir em foto sem esconder os dentes",
+    "subtitulo": "Na primeira consulta você sai com o **plano de tratamento e o valor fechado** — sem surpresa no meio do caminho.",
+    "cta": "Quero minha avaliação",
+    "provaSocial": "**[NOTA REAL]** no Google · [Nº REAL] avaliações",
+    "imagem": null,
+    "imagemAlt": "Paciente sorrindo após tratamento"
+  },
+  "contraste": {
+    "titulo": "Você não precisa passar por isso de novo",
+    "tituloAntes": "O que você já viveu",
+    "antes": ["Orçamento que muda depois que o tratamento começa", "Esperar 40 minutos na recepção", "Sair sem entender o que vai ser feito"],
+    "tituloDepois": "Na Sorriso Vivo",
+    "depois": ["Valor fechado por escrito antes de começar", "Horário marcado é horário cumprido", "Plano explicado com fotos do seu próprio sorriso"]
+  },
+  "servicos": {
+    "eyebrow": "Tratamentos",
+    "titulo": "O que fazemos melhor",
+    "itens": [
+      { "titulo": "Implantes dentários", "texto": "Recupere a mastigação e a confiança com planejamento digital e acompanhamento até a coroa final." },
+      { "titulo": "Lentes de contato dental", "texto": "Prévia digital do resultado antes de qualquer desgaste." },
+      { "titulo": "Clareamento", "texto": "Em consultório ou caseiro supervisionado." },
+      { "titulo": "Ortodontia invisível", "texto": "Alinhadores transparentes, sem bráquetes." },
+      { "titulo": "Limpeza e prevenção", "texto": "Retorno programado para você não precisar lembrar." }
+    ]
+  },
+  "autoridade": {
+    "eyebrow": "Quem cuida de você",
+    "titulo": "[NOME DO(A) DENTISTA RESPONSÁVEL]",
+    "texto": "[FORMAÇÃO, ESPECIALIZAÇÕES E TEMPO DE EXPERIÊNCIA REAIS]",
+    "numeros": [
+      { "valor": "[X]", "rotulo": "anos de clínica" },
+      { "valor": "[X]", "rotulo": "implantes realizados" },
+      { "valor": "[X]", "rotulo": "nota no Google" }
+    ],
+    "imagem": null
+  },
+  "depoimentos": {
+    "titulo": "Quem já passou por aqui",
+    "itens": [
+      { "nome": "[NOME REAL]", "detalhe": "Implante · [bairro]", "texto": "[DEPOIMENTO REAL — de preferência sobre preço ou medo]" },
+      { "nome": "[NOME REAL]", "detalhe": "Lentes · [bairro]", "texto": "[DEPOIMENTO REAL — sobre atendimento/pontualidade]" },
+      { "nome": "[NOME REAL]", "detalhe": "Clareamento · [bairro]", "texto": "[DEPOIMENTO REAL — sobre resultado]" }
+    ]
+  },
+  "triagem": {
+    "titulo": "Agende sua avaliação em 30 segundos",
+    "subtitulo": "Responda 3 perguntas e a nossa equipe já te chama sabendo do que você precisa.",
+    "perguntas": [
+      { "chave": "objetivo", "pergunta": "O que você quer resolver?", "opcoes": ["Implante / dente faltando", "Lentes ou estética do sorriso", "Clareamento", "Alinhar os dentes", "Ainda não sei"] },
+      { "chave": "prazo", "pergunta": "Para quando você quer começar?", "opcoes": ["Esta semana", "Este mês", "Só estou pesquisando"] }
+    ],
+    "tituloContato": "Para quem a nossa equipe vai responder?",
+    "ctaFinal": "Continuar no WhatsApp"
+  },
+  "faq": {
+    "titulo": "Perguntas frequentes",
+    "itens": [
+      { "pergunta": "A avaliação é paga?", "resposta": "[RESPOSTA REAL DA CLÍNICA]" },
+      { "pergunta": "Vocês parcelam?", "resposta": "[CONDIÇÕES REAIS]" },
+      { "pergunta": "Implante dói?", "resposta": "O procedimento é feito com anestesia local. A maioria dos pacientes relata desconforto leve nos primeiros dias, controlado com medicação." },
+      { "pergunta": "Quanto tempo leva o tratamento?", "resposta": "Depende do caso — na avaliação você recebe o cronograma completo por escrito." },
+      { "pergunta": "Tem estacionamento?", "resposta": "[INFORMAÇÃO REAL]" }
+    ]
+  },
+  "ctaFinal": {
+    "titulo": "Seu próximo sorriso em foto começa com uma conversa",
+    "texto": "Sem compromisso. Você sai da avaliação sabendo exatamente o que fazer e quanto custa.",
+    "cta": "Agendar minha avaliação"
+  }
+}

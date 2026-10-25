@@ -69,7 +69,12 @@ function montarHtml(item, marca, w, h, imagem, logo) {
       .ov{inset:${pad}px;border-radius:${Math.round(w * 0.03)}px;background:${img} ${pos}/cover no-repeat ${e};box-shadow:0 30px 80px ${e}40}
       .ac{position:absolute;left:0;bottom:0;width:100%;height:${Math.round(pad * 0.5)}px;background:${p}}`
   };
-  const layout = layouts[item.layout] ? item.layout : 'foto-escurecida';
+  let layout = layouts[item.layout] ? item.layout : 'foto-escurecida';
+  // Layout de foto sem foto vira fundo de cor da marca (em vez de um retângulo escuro vazio)
+  if (!imagem && layout !== 'cor-solida') {
+    console.warn(`Aviso: ${item.id} sem imagem — usando layout cor-solida`);
+    layout = 'cor-solida';
+  }
   const logoTam = Math.round(w * 0.14);
   const logoHtml = logo && item.logo !== false
     ? `<img class="logo" src="${logo}" style="position:absolute;right:${pad}px;top:${pad}px;max-width:${logoTam}px;max-height:${logoTam}px;object-fit:contain">`
